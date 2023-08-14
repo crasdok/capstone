@@ -1,0 +1,3 @@
+motor.c:19:6:go_back	8	static
+motor.c:50:6:nrf_motor	8	static
+motor.c:108:6:rpi_motor	8	static
