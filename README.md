@@ -13,3 +13,6 @@
 ### 라즈베리파이 의 OpenCv를 이용한 차선인식후 방향조절
 ### NRF24L01을 이용한 원거리 통신
 ### 라이다센서를 이용해 앞쪽에 장애물이 있을 시 모터 정지
+
+### [라즈베리파이 송신부](https://github.com/crasdok/capstone/tree/main/RaspberryPi_Tx)
+: 차선인식 후 CAN통신
