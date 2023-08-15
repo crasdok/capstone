@@ -8,25 +8,25 @@
 <img width="40%" src="https://github.com/crasdok/capstone/assets/118472691/78160e14-c080-440e-9248-77b9b9e72d66"/>
 
 ## 기능들
-### 초음파 센서를 이용해 장애물에 가까워졌을 때 부저 알림
-### 조도 센서를 이용해 라이트 밝기 조절
-### 라즈베리파이 의 OpenCv를 이용한 차선인식후 방향조절
-### NRF24L01을 이용한 원거리 통신
-### 라이다센서를 이용해 앞쪽에 장애물이 있을 시 모터 정지
+### 1.초음파 센서를 이용해 장애물에 가까워졌을 때 부저 알림
+### 2.조도 센서를 이용해 라이트 밝기 조절
+### 3.라즈베리파이 의 OpenCv를 이용한 차선인식후 방향조절
+### 4.NRF24L01을 이용한 원거리 통신
+### 5.라이다센서를 이용해 앞쪽에 장애물이 있을 시 모터 정지
 
-### [라즈베리파이 송신부](https://github.com/crasdok/capstone/blob/main/RaspberryPi_Tx/RaspberryPi_Tx.py)
+### -[라즈베리파이 송신부](https://github.com/crasdok/capstone/blob/main/RaspberryPi_Tx/RaspberryPi_Tx.py)
 : 차선인식 후 CAN통신
 
-### [STM32 RF통신](https://github.com/crasdok/capstone/tree/main/STM32F411_TX)
+### -[STM32 RF통신](https://github.com/crasdok/capstone/tree/main/STM32F411_TX)
 : RF통신
 
-### [STM32 모터](https://github.com/crasdok/capstone/tree/main/STM32H7A3ZI_1_RX)
+### -[STM32 모터](https://github.com/crasdok/capstone/tree/main/STM32H7A3ZI_1_RX)
 : 받은 정보로 기능구현
 
-### [STM32 초음파,조도](https://github.com/crasdok/capstone/tree/main/STM32H7A3ZI_2_TX)
+### -[STM32 초음파,조도](https://github.com/crasdok/capstone/tree/main/STM32H7A3ZI_2_TX)
 : 초음파 조도 값을 CAN통신
 
-### [STM32 라이다](https://github.com/crasdok/capstone/tree/main/STM32H7A3ZI_3_TX)
+### -[STM32 라이다](https://github.com/crasdok/capstone/tree/main/STM32H7A3ZI_3_TX)
 : 라이다값 CAN통신
 
 
