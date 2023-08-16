@@ -1,11 +1,9 @@
 # FutureLink: Smart Communication in ADAS-Equipped Electric Vehicle with CAN and NRF
 ![header](https://capsule-render.vercel.app/api?type=shark&color=auto&height=300&section=header&text=Future%20Link&fontSize=90)
 
-##  목차 
+##  1.목차 
 
-<b>
-
--   [프로젝트 소개](#-프로젝트-소개)
+-   [프로젝트 소개](#2.-프로젝트-소개)
 -   [기술 및 도구](#-기술-및-도구)
 -   [작품 소개](#-작품-소개)
 -   [기능 구현 영상](#-기능-구현-영상)
@@ -17,7 +15,7 @@
   - [자동 헤드라이트](#2-자동-헤드라이트)
 
 
-## 프로젝트 소개
+## 2.프로젝트 소개
 ### STM32 와 라즈베리파이를 이용하여 무선조종과 자율주행이 가능한 RC카를 구현했습니다.
 
 <img width="40%" src="https://github.com/crasdok/capstone/assets/118472691/78160e14-c080-440e-9248-77b9b9e72d66"/>
