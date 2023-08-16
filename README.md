@@ -18,19 +18,19 @@
 
 ## 포트폴리오 개요
 
-> **프로젝트:** Smart Communication in ADAS-Equipped Electric Vehicle with CAN-FD, CAN and RF
->
-> **기획 및 제작:** 최원진, 강민성, 오승찬
->
-> **제작 기간:** 2023.01 ~ 08.
->
-> **주요 기능:** Lane Keeping Assist, Forward Collision Warning, Blind-Spot Collision-Avoidance Assist, Auto headlight, Radio control 
->
-> **사용 기술:** CAN-FD, CAN, RF Communication
->
-> **문의:** 1304ccy@naver.com
->
-> <br> [목차로 돌아가기](#1목차) <br>
+ **프로젝트:** Smart Communication in ADAS-Equipped Electric Vehicle with CAN-FD, CAN and RF
+
+ **기획 및 제작:** 최원진, 강민성, 오승찬
+
+ **제작 기간:** 2023.01 ~ 08.
+
+ **주요 기능:** 원거리 무선조종, 라이다, 초음파 충돌경고
+
+ **사용 기술:** CAN-FD, CAN, RF Communication
+
+ **문의:** 1304ccy@naver.com
+
+ <br> [목차로 돌아가기](#1목차) <br>
 
 ---
 
@@ -44,6 +44,7 @@
 
 <img width="40%" src="https://github.com/crasdok/capstone/assets/118472691/78160e14-c080-440e-9248-77b9b9e72d66"/>
 
+<br> [목차로 돌아가기](#1목차) <br>
 ---
 ## 3.기능들
 
@@ -53,7 +54,12 @@
   ### 4.NRF24L01을 이용한 원거리 통신
   ### 5.라이다센서를 이용해 앞쪽에 장애물이 있을 시 모터 정지
 
+<br> [목차로 돌아가기](#1목차) <br>
+
 ---
+
+## 기능 구현
+
 ## 기능별 코드
 
   ### -[라즈베리파이 송신부](https://github.com/crasdok/capstone/blob/main/RaspberryPi_Tx/RaspberryPi_Tx.py)
