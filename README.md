@@ -69,7 +69,10 @@
    >기능 구현 영상
   ### 3.라즈베리파이 의 OpenCv를 이용한 차선인식후 방향조절
 
-  ![차선인식1_AdobeExpress_AdobeExpress](https://github.com/crasdok/capstone/assets/118472691/1354c4d5-52e4-4307-b605-7505c764afac)
+  ![차선인식1_AdobeExpress_AdobeExpress](https://github.com/crasdok/capstone/assets/118472691/1354c4d5-52e4-4307-b605-7505c764afac) ![차선인식2_AdobeExpress_AdobeExpress](https://github.com/crasdok/capstone/assets/118472691/87baa6f4-f911-4d27-be59-0a3b4d04b713)
+
+  
+
   
   ### 4.NRF24L01을 이용한 원거리 통신
 
