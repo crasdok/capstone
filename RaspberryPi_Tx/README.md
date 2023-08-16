@@ -50,6 +50,3 @@ mimg = cv2.addWeighted(src, 1, ccan, 1, 0)
 * Python
 * OpenCV
 
-### 프로젝트 진행 기간
-------------
-2021년 9월 ~ 2021년 10월
