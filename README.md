@@ -14,19 +14,25 @@
   - [초음파 충돌경고](#2-초음파-충돌경고)
   - [자동 헤드라이트](#2-자동-헤드라이트)
 
+---
+
 
 ## 2.프로젝트 소개
+
 ### STM32 와 라즈베리파이를 이용하여 무선조종과 자율주행이 가능한 RC카를 구현했습니다.
 
 <img width="40%" src="https://github.com/crasdok/capstone/assets/118472691/78160e14-c080-440e-9248-77b9b9e72d66"/>
 
+---
 ## 3.기능들
+
   ### 1.초음파 센서를 이용해 장애물에 가까워졌을 때 부저 알림
   ### 2.조도 센서를 이용해 라이트 밝기 조절
   ### 3.라즈베리파이 의 OpenCv를 이용한 차선인식후 방향조절
   ### 4.NRF24L01을 이용한 원거리 통신
   ### 5.라이다센서를 이용해 앞쪽에 장애물이 있을 시 모터 정지
 
+---
 ## 기능별
 
   ### -[라즈베리파이 송신부](https://github.com/crasdok/capstone/blob/main/RaspberryPi_Tx/RaspberryPi_Tx.py)
@@ -43,5 +49,7 @@
 
   ### -[STM32 라이다](https://github.com/crasdok/capstone/tree/main/STM32H7A3ZI_3_TX)
 : 라이다값 CAN통신
+
+
 
 
