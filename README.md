@@ -3,10 +3,10 @@
 
 ##  1.목차 
 
-- [프로젝트 소개](#2프로젝트-소개)
+- [프로젝트 개요](#2프로젝트-개요)
 - [기능들](#3기능들)
 - [작품 소개](#4기능별)
-- [기능 구현 영상](#-기능-구현-영상)
+- [기능 구현](#-기능-구현)
   - [CAN,CAN-FD통신](#1-CAN,CAN-FD-통신)
   - [RF통신](#2-RF-통신)
   - [Lane Keeping Assist](#2-Lane-Keeping-Assist)
@@ -16,8 +16,29 @@
 
 ---
 
+## 포트폴리오 개요
 
-## 2.프로젝트 소개
+> **프로젝트:** Smart Communication in ADAS-Equipped Electric Vehicle with CAN-FD, CAN and RF
+>
+> **기획 및 제작:** 최원진, 강민성, 오승찬
+>
+> **제작 기간:** 2023.01 ~ 08.
+>
+> **주요 기능:** Lane Keeping Assist, Forward Collision Warning, Blind-Spot Collision-Avoidance Assist, Auto headlight, Radio control 
+>
+> **사용 기술:** CAN-FD, CAN, RF Communication
+>
+> **문의:** 1304ccy@naver.com
+>
+> <br> [목차로 돌아가기](##목차) <br>
+
+---
+
+## 기술 및 도구
+
+<img src="https://img.shields.io/badge/STM32-03234B?style=for-the-badge&logo=stmicroelectronics&logoColor=white"> <img src="https://img.shields.io/badge/raspberrypi-A22846?style=for-the-badge&logo=raspberrypi&logoColor=white"> <img src="https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=C&logoColor=white"> <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white"> <img src="https://img.shields.io/badge/GITHUB-181717?style=for-the-badge&logo=github&logoColor=white"> 
+
+## 2.프로젝트 개요
 
 ### STM32 와 라즈베리파이를 이용하여 무선조종과 자율주행이 가능한 RC카를 구현했습니다.
 
@@ -33,7 +54,7 @@
   ### 5.라이다센서를 이용해 앞쪽에 장애물이 있을 시 모터 정지
 
 ---
-## 기능별
+## 기능별 코드
 
   ### -[라즈베리파이 송신부](https://github.com/crasdok/capstone/blob/main/RaspberryPi_Tx/RaspberryPi_Tx.py)
 : 차선인식 후 CAN통신
