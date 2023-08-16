@@ -66,7 +66,9 @@
   ### 1.초음파 센서를 이용해 장애물에 가까워졌을 때 부저 알림
    >기능 구현 영상
   ### 2.조도 센서를 이용해 라이트 밝기 조절
-   >기능 구현 영상
+
+   ![조도_AdobeExpress_AdobeExpress](https://github.com/crasdok/capstone/assets/118472691/9af83768-4169-43a9-a157-16b1ed7a79a8)
+   
   ### 3.라즈베리파이 의 OpenCv를 이용한 차선인식후 방향조절
 
   ![차선인식1_AdobeExpress_AdobeExpress](https://github.com/crasdok/capstone/assets/118472691/1354c4d5-52e4-4307-b605-7505c764afac) ![차선인식2_AdobeExpress_AdobeExpress](https://github.com/crasdok/capstone/assets/118472691/87baa6f4-f911-4d27-be59-0a3b4d04b713)
