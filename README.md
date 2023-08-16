@@ -98,7 +98,7 @@
 
 ## 기능별 코드
 
-  ### [라즈베리파이 송신부](https://github.com/crasdok/capstone/blob/main/RaspberryPi_Tx/RaspberryPi_Tx.py)
+  ### [라즈베리파이 송신부](https://github.com/crasdok/capstone/blob/main/RaspberryPi_Tx)
 : 차선인식 후 CAN통신
 
   ### [STM32 RF통신](https://github.com/crasdok/capstone/tree/main/STM32F411_TX)
