@@ -81,7 +81,8 @@
   ![NRF영상_AdobeExpress_AdobeExpress](https://github.com/crasdok/capstone/assets/118472691/0e8da015-865e-457a-8531-79db8783a3ea)
   
   ### 5.라이다센서를 이용해 앞쪽에 장애물이 있을 시 모터 정지
-   >기능 구현 영상
+
+ ![라이다_AdobeExpress_AdobeExpress](https://github.com/crasdok/capstone/assets/118472691/9ee851ef-f989-4317-b288-fad4d372f022)
 
 <br> [목차로 돌아가기](#1목차) <br>
 
