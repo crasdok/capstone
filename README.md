@@ -9,7 +9,7 @@
   - [CAN,CAN-FD통신](#-CAN,CAN-FD-통신)
   - [RF통신](#2-RF-통신)
   - [Lane Keeping Assist](#2-Lane-Keeping-Assist)
-  - [라이다 충돌경고](#1-초음파-센서를-이용해-장애물에-가까워졌을-때-부저 알림)
+  - [라이다 충돌경고](##1-초음파-센서를-이용해-장애물에-가까워졌을-때-부저 알림)
   - [초음파 충돌경고](#2-초음파-충돌경고)
   - [자동 헤드라이트](#2-자동-헤드라이트)
 - [기능별 코드](#기능별-코드)
@@ -45,7 +45,9 @@
 <img width="40%" src="https://github.com/crasdok/capstone/assets/118472691/78160e14-c080-440e-9248-77b9b9e72d66"/>
 
 <br> [목차로 돌아가기](#1목차) <br>
+
 ---
+
 ## 기능구현
 
   ### 1.초음파 센서를 이용해 장애물에 가까워졌을 때 부저 알림
@@ -68,19 +70,19 @@
 
 ## 기능별 코드
 
-  ### -[라즈베리파이 송신부](https://github.com/crasdok/capstone/blob/main/RaspberryPi_Tx/RaspberryPi_Tx.py)
+  ### [라즈베리파이 송신부](https://github.com/crasdok/capstone/blob/main/RaspberryPi_Tx/RaspberryPi_Tx.py)
 : 차선인식 후 CAN통신
 
-  ### -[STM32 RF통신](https://github.com/crasdok/capstone/tree/main/STM32F411_TX)
+  ### [STM32 RF통신](https://github.com/crasdok/capstone/tree/main/STM32F411_TX)
 : RF통신
 
-  ### -[STM32 모터](https://github.com/crasdok/capstone/tree/main/STM32H7A3ZI_1_RX)
+  ### [STM32 모터](https://github.com/crasdok/capstone/tree/main/STM32H7A3ZI_1_RX)
 : 받은 정보로 기능구현
 
-  ### -[STM32 초음파,조도](https://github.com/crasdok/capstone/tree/main/STM32H7A3ZI_2_TX)
+  ### [STM32 초음파,조도](https://github.com/crasdok/capstone/tree/main/STM32H7A3ZI_2_TX)
 : 초음파 조도 값을 CAN통신
 
-  ### -[STM32 라이다](https://github.com/crasdok/capstone/tree/main/STM32H7A3ZI_3_TX)
+  ### [STM32 라이다](https://github.com/crasdok/capstone/tree/main/STM32H7A3ZI_3_TX)
 : 라이다값 CAN통신
 
 
