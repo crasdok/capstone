@@ -4,7 +4,7 @@
 
 ## 사용 보드
 
-
+<img width="30%" src="https://github.com/crasdok/capstone/assets/118472691/1c0dd492-0efd-4748-a8c1-77e61ac538ec"/>
 
 ###  주요 기능 
 ------------
@@ -44,9 +44,15 @@ mimg = cv2.addWeighted(src, 1, ccan, 1, 0)
  line_arr2[i] = np.append(line_arr[i], np.array((np.arctan2(l[1] - l[3], l[0] - l[2]) * 180) / np.pi))
 ```
 
+> 방향제어 예시
+
+<img width="50%" src="https://github.com/crasdok/capstone/assets/118472691/580509e4-9024-4171-8904-21c613dff041"/>
+
 ### 사용 기술
 ------------
 * Raspberry Pi
 * Python
 * OpenCV
+
+<br> [위로](#라즈베리파이) <br>
 
