@@ -53,6 +53,10 @@ mimg = cv2.addWeighted(src, 1, ccan, 1, 0)
 * Raspberry Pi
 * Python
 * OpenCV
+* Hough Transform
+* Canny Edge Detection
+* 이미지 가져오기 및 전처리
+* 색상 및 채도 필터링
 
 <br> [위로](#라즈베리파이) <br>
 
