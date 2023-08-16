@@ -70,7 +70,9 @@
   ### 3.라즈베리파이 의 OpenCv를 이용한 차선인식후 방향조절
    >기능 구현 영상
   ### 4.NRF24L01을 이용한 원거리 통신
-   >기능 구현 영상
+
+  ![NRF영상_AdobeExpress_AdobeExpress](https://github.com/crasdok/capstone/assets/118472691/0e8da015-865e-457a-8531-79db8783a3ea)
+  
   ### 5.라이다센서를 이용해 앞쪽에 장애물이 있을 시 모터 정지
    >기능 구현 영상
 
