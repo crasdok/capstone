@@ -3,16 +3,16 @@
 
 ##  1.목차 
 
-- [프로젝트 개요](#2프로젝트-개요)
-- [기능들](#3기능들)
+- [포트폴리오 개요](#포트폴리오-개요)
 - [작품 소개](#4기능별)
-- [기능 구현](#-기능-구현)
-  - [CAN,CAN-FD통신](#1-CAN,CAN-FD-통신)
+- [기능 구현](#기능-구현)
+  - [CAN,CAN-FD통신](#-CAN,CAN-FD-통신)
   - [RF통신](#2-RF-통신)
   - [Lane Keeping Assist](#2-Lane-Keeping-Assist)
-  - [라이다 충돌경고](#2-라이다-충돌경고)
+  - [라이다 충돌경고](#1-초음파-센서를-이용해-장애물에-가까워졌을-때-부저 알림)
   - [초음파 충돌경고](#2-초음파-충돌경고)
   - [자동 헤드라이트](#2-자동-헤드라이트)
+- [기능별 코드](#기능별-코드)
 
 ---
 
@@ -38,7 +38,7 @@
 
 <img src="https://img.shields.io/badge/STM32-03234B?style=for-the-badge&logo=stmicroelectronics&logoColor=white"> <img src="https://img.shields.io/badge/raspberrypi-A22846?style=for-the-badge&logo=raspberrypi&logoColor=white"> <img src="https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=C&logoColor=white"> <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white"> <img src="https://img.shields.io/badge/GITHUB-181717?style=for-the-badge&logo=github&logoColor=white"> 
 
-## 2.프로젝트 개요
+## 프로젝트 목표
 
 ### STM32 와 라즈베리파이를 이용하여 무선조종과 자율주행이 가능한 RC카를 구현했습니다.
 
@@ -46,19 +46,25 @@
 
 <br> [목차로 돌아가기](#1목차) <br>
 ---
-## 3.기능들
+## 기능구현
 
   ### 1.초음파 센서를 이용해 장애물에 가까워졌을 때 부저 알림
+   >기능 구현 영상
   ### 2.조도 센서를 이용해 라이트 밝기 조절
+   >기능 구현 영상
   ### 3.라즈베리파이 의 OpenCv를 이용한 차선인식후 방향조절
+   >기능 구현 영상
   ### 4.NRF24L01을 이용한 원거리 통신
+   >기능 구현 영상
   ### 5.라이다센서를 이용해 앞쪽에 장애물이 있을 시 모터 정지
+   >기능 구현 영상
 
 <br> [목차로 돌아가기](#1목차) <br>
 
+
 ---
 
-## 기능 구현
+
 
 ## 기능별 코드
 
