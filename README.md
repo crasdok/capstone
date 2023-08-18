@@ -35,6 +35,16 @@
 
 ---
 
+## 기술 및 도구
+
+<img src="https://img.shields.io/badge/STM32-03234B?style=for-the-badge&logo=stmicroelectronics&logoColor=white"> <img src="https://img.shields.io/badge/raspberrypi-A22846?style=for-the-badge&logo=raspberrypi&logoColor=white"> <img src="https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=C&logoColor=white"> <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white"> <img src="https://img.shields.io/badge/GITHUB-181717?style=for-the-badge&logo=github&logoColor=white"> 
+
+## 프로젝트 목표
+
+### STM32 와 라즈베리파이를 이용하여 ADAS시스템을 구현하고 무선조종과 자율주행이 가능한 차량을 만들었습니다
+
+---
+
 ## Function Diagram
 
 <img src="https://github.com/crasdok/capstone/assets/118472691/7d55455e-2d82-4735-b75a-c6cfbd8d08fb">
@@ -45,23 +55,12 @@
 
 
 ---
+
 ## 프로젝트 구상도
 
 ![구상도](https://github.com/crasdok/capstone/assets/118472691/957f725b-7a13-4690-96ac-83ff8acd3b38)
 
 - 2개의 STM32H7A3ZI-Q 보드와 1개의 라즈베리파이, 1개의 STM32F411보드로 1개의 STM32H7A3ZI-Q 보드에 정보를 보냄
-
-<br> [목차로 돌아가기](#1목차) <br>
-
----
-
-## 기술 및 도구
-
-<img src="https://img.shields.io/badge/STM32-03234B?style=for-the-badge&logo=stmicroelectronics&logoColor=white"> <img src="https://img.shields.io/badge/raspberrypi-A22846?style=for-the-badge&logo=raspberrypi&logoColor=white"> <img src="https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=C&logoColor=white"> <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white"> <img src="https://img.shields.io/badge/GITHUB-181717?style=for-the-badge&logo=github&logoColor=white"> 
-
-## 프로젝트 목표
-
-### STM32 와 라즈베리파이를 이용하여 ADAS시스템을 구현하고 무선조종과 자율주행이 가능한 차량을 만들었습니다
 
 <br> [목차로 돌아가기](#1목차) <br>
 
