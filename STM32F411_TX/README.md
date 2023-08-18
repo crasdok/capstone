@@ -4,7 +4,7 @@
 
 ## HardWare
 
-### 사용 보드 및 모듈
+* 사용 보드 및 모듈
 
 <img width="15%" img src="https://github.com/crasdok/capstone/assets/118472691/41401bde-bbf7-4947-a453-83145d4e18fd">
 <img width="40%" img src="https://github.com/crasdok/capstone/assets/118472691/22a43bd1-8ad6-44d3-a3bf-ec31a0f7d39c">
@@ -18,7 +18,7 @@
 ### RF통신을 사용한 이유: HC-05,HC-06 모듈을 사용하였는데 통신 범위가 너무 짧았기 때문에
 ### NRF24L01모듈의 안테나 버전을 사용한 이유: 보다 나은 통신 범위를 가지기 위해
 
-### 악셀값과 핸들값 송신부 사진
+* 악셀값과 핸들값 송신부 사진
 
   <img width="50%" img src="https://github.com/crasdok/capstone/assets/118472691/a5820f42-f078-459c-b509-c5edebdb0df2">
 
