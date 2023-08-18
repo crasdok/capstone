@@ -2,9 +2,13 @@
 
 ### [목차로](https://github.com/crasdok/capstone/blob/main/README.md)
 
-## 사용 보드
+## 사용 보드 및 모듈
 
-<img width="30%" src="https://github.com/crasdok/capstone/assets/118472691/1c0dd492-0efd-4748-a8c1-77e61ac538ec"/>
+<img width="30%" src="https://github.com/crasdok/capstone/assets/118472691/1c0dd492-0efd-4748-a8c1-77e61ac538ec"/> <img width="30.7%" src="https://github.com/crasdok/capstone/assets/118472691/2d89bfdc-80fc-41d4-bb9b-ff89ef32365d"/>
+
+<img width="23%" src="https://github.com/crasdok/capstone/assets/118472691/3fff296b-3e77-458b-8395-f9b87f5abd2a"/> <img width="30%" src="https://github.com/crasdok/capstone/assets/118472691/601356d0-afae-4b8b-b301-c7f703c0714d"/>
+
+> 라즈베리파이 4B+,   MCP2515 CAN BUS module, 웹캠, 라즈베리파이용 디스플레이
 
 ###  주요 기능 
 ------------
