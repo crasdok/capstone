@@ -48,6 +48,14 @@ mimg = cv2.addWeighted(src, 1, ccan, 1, 0)
  line_arr2[i] = np.append(line_arr[i], np.array((np.arctan2(l[1] - l[3], l[0] - l[2]) * 180) / np.pi))
 ```
 
+* CAN통신
+> 값 전달
+```
+message = can.Message(arbitration_id=0x44, is_extended_id=False,data=[0x52])
+bus.send(message, timeout=0.2)
+```
+
+
 > 방향제어 예시
 
 <img width="50%" src="https://github.com/crasdok/capstone/assets/118472691/580509e4-9024-4171-8904-21c613dff041"/>
