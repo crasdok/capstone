@@ -85,6 +85,12 @@
   ### 4.NRF24L01을 이용한 원거리 통신
 
   ![NRF영상_AdobeExpress_AdobeExpress](https://github.com/crasdok/capstone/assets/118472691/0e8da015-865e-457a-8531-79db8783a3ea)
+
+  
+
+  <img width="50%" img src="https://github.com/crasdok/capstone/assets/118472691/a5820f42-f078-459c-b509-c5edebdb0df2">
+  
+> 원거리 통신 핸들과 액셀레이터 부분
   
   ### 5.라이다센서를 이용해 앞쪽에 장애물이 있을 시 모터 정지
 
