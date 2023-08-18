@@ -4,7 +4,7 @@
 ##  1.목차 
 
 - [포트폴리오 개요](#포트폴리오-개요)
-- [프로젝트 개요](#프로젝트-개요)
+- [Function Diagram](#Function-Diagram)
 - [프로젝트 구상도](#프로젝트-구상도)
 - [기능 구현](#기능구현)
   - CAN,CAN-FD통신
@@ -35,8 +35,9 @@
 
 ---
 
-## 프로젝트 개요
-<img src="https://github.com/crasdok/capstone/assets/118472691/f9c950be-330e-4d76-9252-f0c925a6ba35">
+## Function Diagram
+
+<img src="https://github.com/crasdok/capstone/assets/118472691/7d55455e-2d82-4735-b75a-c6cfbd8d08fb">
 
 
 ---
