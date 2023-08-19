@@ -22,12 +22,12 @@
 
 ## SoftWare
 * getData 함수를 이용해 거리, 온도, 신호 강도를 측정
-```
+```c
 getData(&TF_Luna_1, &tfDist, &tfFlux, &tfTemp);
 ```
 
 * 측정 값을 FDCAN을 통해 송신 하는 코드
-```
+```c
 sprintf ((char *)TxData_Node1_To_Node3," %d%d%d",Dist1,Dist2,Dist3);
   if (HAL_FDCAN_AddMessageToTxFifoQ(&hfdcan1, &TxHeader, TxData_Node1_To_Node3)!= HAL_OK)
 	  	{
