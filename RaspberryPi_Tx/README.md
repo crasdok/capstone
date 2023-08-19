@@ -65,6 +65,13 @@ bus.send(message, timeout=0.2)
 
 <img width="50%" src="https://github.com/crasdok/capstone/assets/118472691/580509e4-9024-4171-8904-21c613dff041"/>
 
+### 문제점 및 개선점
+
+<img width="60%" src="https://github.com/crasdok/capstone/assets/118472691/f9c37564-282a-4767-b809-39d998f18080"/>
+
+> * 차량의 보닛에 카메라를 달자 1m 정도 앞의 차선을 인식.
+> * 차량과 차선의 크기를 고려하여 높은 위치에서 앞의 차선을 인식하게 함. 
+
 ### 사용 기술
 ------------
 * Raspberry Pi
