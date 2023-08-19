@@ -39,18 +39,18 @@
 ## SoftWare
 
 > TX주소와 값의 길이 설정
-```
+```c
 uint8_t TxAddress[] = {0xEE,0xDD,0xCC,0xBB,0xAA};
 uint8_t TxData[32];
 ```
 
 > TX모드 설정
-```
+```c
 NRF24_TxMode(TxAddress, 10);
 ```
 
 > ADC값 변환 후 가공
-```
+```c
 HAL_ADC_Start(&hadc1);
 HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
 TxData[0] = HAL_ADC_GetValue(&hadc1)/27;
@@ -58,7 +58,7 @@ TxData[1] = HAL_ADC_GetValue(&hadc1)/40;
 ```
 
 > 전송하는지 확인하기 위한 led 작동
-```
+```c
 if (NRF24_Transmit(TxData) == 1)
 	  	  {
 	  		  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
