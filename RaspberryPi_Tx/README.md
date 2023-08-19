@@ -69,8 +69,11 @@ bus.send(message, timeout=0.2)
 * Raspberry Pi
 * Python
 * OpenCV
+  > OpenCV(Open Source Computer Vision Library)는 컴퓨터 비전 및 이미지 처리를 위한 오픈 소스 라이브러리입니다. 주로 실시간 컴퓨터 비전 작업, 영상 처리, 객체 감지, 얼굴 인식, 모션 추적 등 다양한 응용 분야에서 사용됩니다.
 * Hough Transform
+  > 허프 변환(Hough Transform)은 이미지에서 직선이나 다른 형태의 기하학적 모양을 검출하는데 사용되는 컴퓨터 비전 기술입니다. 주로 이미지에서 선이나 원과 같은 모양을 감지하는 데 활용되며, 특히 이미지에서 노이즈나 각도 변화 등으로 인해 정확한 픽셀 위치로부터 모양을 찾기 어려운 경우에 유용합니다.
 * Canny Edge Detection
+  > Canny Edge Detection은 이미지에서 엣지(경계)를 검출하는데 사용되는 컴퓨터 비전 기술 중 하나로, 엣지가 뚜렷하게 검출되며 노이즈에 강한 결과를 얻을 수 있는 방법으로 널리 사용됩니다.
 * 이미지 가져오기 및 전처리
 * 색상 및 채도 필터링
 
