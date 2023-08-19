@@ -2,8 +2,6 @@
 
 ### [목차로](https://github.com/crasdok/capstone/blob/main/README.md)
 
-## HardWare
-
 ### 사용 보드 및 모듈
 
 <img width="20%" img src="https://github.com/crasdok/capstone/assets/118472691/cfe702d3-d627-4ac1-bfec-9163f5f86fbb">
@@ -25,8 +23,7 @@
 | 초음파 센서 | 좌,우, 후면 3군데에 초음파를 이용하여 거리 정보를 알 수 있다. |
 | 조도 센서  | 밝고 어두운 정도를 알 수 있다. |
 
-## SoftWare
-
+ ## 코드
 * 1개의 초음파 센서의 2개의 입력신호 사이의 간격을 측정
 ```c
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
