@@ -116,9 +116,6 @@ NRF24_TxMode(TxAddress, 10);
 	    HAL_ADC_Start(&hadc1);
 	    HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
 	    TxData[0] = HAL_ADC_GetValue(&hadc1)/27;
-
-	    HAL_ADC_Start(&hadc1);
-	    HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
 	    TxData[1] = HAL_ADC_GetValue(&hadc1)/40;
 	    if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_3)==1)
 	    {
