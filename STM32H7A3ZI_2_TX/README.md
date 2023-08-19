@@ -28,7 +28,7 @@
 ## SoftWare
 
 * 1개의 초음파 센서의 2개의 입력신호 사이의 간격을 측정
-```
+```c
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 {
 	if (htim->Channel == HAL_TIM_ACTIVE_CHANNEL_1)  // if the interrupt source is channel1
@@ -69,7 +69,7 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 > 이러한 초음파 센서 3개가 있다.
 
 * 초음파 발사 및 정지
-```
+```c
 void HCSR04_Read (void)
 {
    HAL_GPIO_WritePin(TRIG_PORT1, TRIG_PIN1, GPIO_PIN_SET);  // pull the TRIG pin HIGH
@@ -82,7 +82,7 @@ void HCSR04_Read (void)
 ```
 
 * 측정 값을 FDCAN을 통해 송신 하는 코드
-```
+```c
 sprintf ((char *)TxData_Node3_To_Node2," %d%d%d%d",D1_1,D1_2,D1_3,D2_1);
   if (HAL_FDCAN_AddMessageToTxFifoQ(&hfdcan1, &TxHeader, TxData_Node3_To_Node2)!= HAL_OK)
 	  	{
