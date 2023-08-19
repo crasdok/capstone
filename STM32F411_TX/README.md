@@ -2,8 +2,6 @@
 
 ### [목차로](https://github.com/crasdok/capstone/blob/main/README.md)
 
-## HardWare
-
 * 사용 보드 및 모듈
 
 <img width="15%" img src="https://github.com/crasdok/capstone/assets/118472691/41401bde-bbf7-4947-a453-83145d4e18fd">
@@ -15,6 +13,9 @@
 
 
 > STM32F411보드, NRF24L01, 토글 스위치, 가변저항
+
+ ## 순서도
+<img width="60%" img src="https://github.com/crasdok/capstone/assets/118472691/b4bea1f8-88fe-45f1-85f7-5c1a1f29941c">
 
 ## 각각의 보드와 모듈을 사용한 이유
 |보드, 모듈| 설명                                                         |
@@ -36,7 +37,7 @@
 | 토글 스위치 | 전후진 과 주행모드를 선택할 수 있게 해준다. |
 | 가변저항  | 악셀이 어느정도 밟았는지 와 핸들이 어느정도 위치에 있는지 값으로 나타내준다. |
 
-## SoftWare
+
 
 > TX주소와 값의 길이 설정
 ```c
