@@ -132,13 +132,11 @@ NRF24_TxMode(TxAddress, 10);
 	    if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4)==1)
 	    {
 	    	button2 = 1;
-//	    	HAL_Delay(400);
 	    	TxData[3] = button2;
 	    }
 	    if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4)==0)
 	    {
 	    	button2 = 0;
-//	    	HAL_Delay(400);
 	    	TxData[3] = button2;
 	    }
 
