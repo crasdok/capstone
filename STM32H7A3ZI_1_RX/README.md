@@ -2,7 +2,7 @@
 
 ### [목차로](https://github.com/crasdok/capstone/blob/main/README.md)
 
-## HardWare
+
 
 ### 사용 보드 및 모듈
 
@@ -29,6 +29,8 @@
 | 모터 드라이버  | 모터의 전력을 공급하고 전류와 전압을 제어, 모터를 보호한다. |
 | 헤드라이트  | 전방을 밝히며 조도센서에 의해 밝기가 조절 된다. |
 
-## SoftWare
+### 순서도 
+
+<img width="60%" img src="https://github.com/crasdok/capstone/assets/118472691/ec6abf08-7116-40f8-951a-9d69a85358bd">
 
 <br> [위로](#초음파센서-및-조도센서-STM32) <br>
