@@ -31,6 +31,6 @@
 
 ### 순서도 
 
-<img width="60%" img src="https://github.com/crasdok/capstone/assets/118472691/ec6abf08-7116-40f8-951a-9d69a85358bd">
+<img width="60%" img src="https://github.com/crasdok/capstone/assets/118472691/07dca26d-33f4-4e66-bbfc-56cf72ddde81">
 
 <br> [위로](#초음파센서-및-조도센서-STM32) <br>
