@@ -10,6 +10,10 @@
 
 > 라즈베리파이 4B+,   MCP2515 CAN BUS module, 웹캠, 라즈베리파이용 디스플레이
 
+### 순서도
+
+<img width="70%" src="https://github.com/crasdok/capstone/assets/118472691/279e479c-f8f7-4770-9756-d49def565414"/>
+
 ###  주요 기능 
 ------------
 * 차선 인식
