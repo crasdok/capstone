@@ -12,7 +12,8 @@
 
 ### 순서도
 
-<img width="70%" src="https://github.com/crasdok/capstone/assets/118472691/279e479c-f8f7-4770-9756-d49def565414"/>
+<img width="70%" src="https://github.com/crasdok/capstone/assets/118472691/dbffaf9c-016d-4d24-91bf-44b46e3e6d16"/>
+
 
 ###  주요 기능 
 ------------
