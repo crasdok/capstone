@@ -36,19 +36,27 @@
 ### 중요 코드
 
 ```c
-MX_FDCAN1_Init
+MX_FDCAN1_Init();
 
 ```
 > FDCAN 통신을 위한 모듈 초기화 및 파라미터 설정
 
 ```c
 NRF24_Init();
+uint8_t RxAddress[] = {0x00,0xDD,0xCC,0xBB,0xAA};
 NRF24_RxMode(RxAddress, 10);//nrf rx
 NRF24_ReadAll(data);//nrf rx
 
 ```
 
-> CAN 포기화
+> RF통신을 위한 모듈 초기화 및 설정들, 데이터 수신
+
+```c
+TxHeader.Identifier = 0x11; // 라이다
+TxHeader.Identifier = 0x33; // 초음파, 조도센서
+TxHeader.Identifier = 0x44; // 라즈베리파이
+```
+> 각 ECU들의 TxHeader.ID
 
 ```c
 void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
@@ -66,7 +74,23 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 	  }
    }
 ```
-> CallBack
+>  FIFO CallBack
+
+```c
+void HAL_FDCAN_RxBufferNewMessageCallback(FDCAN_HandleTypeDef *hfdcan)
+{
+
+    if (FDCAN1 == hfdcan->Instance)
+    {
+        if (HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_BUFFER0, &RxHeader, RxData_From_Node4) != HAL_OK)
+        {
+            Error_Handler();
+        }
+    }
+
+}
+```
+>  BUFFER CallBack
 
 ```c
         if (HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_BUFFER_NEW_MESSAGE, 0) != HAL_OK)
@@ -86,20 +110,27 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 > 각각의 ECU들의 ACK 전송
 
 ```c
-	  go_back();
-	  buzzer();
-	  light_sensor();
-	  nrf_motor();
-	  rpi_motor();
-```
-> 주요 함수 들로 자세히 보려면
+  while (1)
+  {
+    /* USER CODE END WHILE */
 
-```c
-TxHeader.Identifier = 0x11; // 라이다
-TxHeader.Identifier = 0x33; // 초음파, 조도센서
-TxHeader.Identifier = 0x44; // 라즈베리파이
+    /* USER CODE BEGIN 3 */
+	  if (isDataAvailable(2) == 1)
+	  {
+		  NRF24_Receive(RxData);
+	  }
+
+	  go_back(); //RF통신을 통해 받은 값으로 앞,뒤로 모터를 돌리는 함수
+	  buzzer(); //CAN통신을 통해 받은 값으로 부저를 울리는 함수
+	  light_sensor(); //CAN통신을 통해 받은 값으로 헤드라이트의 밝기를 조절하는 함수
+	  nrf_motor(); //RF통신을 통해 받은 값으로 앞바퀴의 좌,우를 움직이는 함수
+	  rpi_motor(); //CAN통신을 통해 받은 값으로 앞바퀴의 좌,우를 움직이는 함수
+	}
 ```
-> 각 ECU들의 TxHeader.ID
+> Main의 While문
+
+
+
 
 
 
