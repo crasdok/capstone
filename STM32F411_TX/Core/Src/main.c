@@ -72,8 +72,8 @@ uint8_t TxData[32];
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	HAL_StatusTypeDef HAL_ADC_Start(ADC_HandleTypeDef* hadc);
-		HAL_StatusTypeDef HAL_ADC_PollForConversion(ADC_HandleTypeDef* hadc, uint32_t Timeout);
+HAL_StatusTypeDef HAL_ADC_Start(ADC_HandleTypeDef* hadc);
+HAL_StatusTypeDef HAL_ADC_PollForConversion(ADC_HandleTypeDef* hadc, uint32_t Timeout);
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -99,11 +99,9 @@ int main(void)
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
   NRF24_Init();
-NRF24_TxMode(TxAddress, 10);
+  NRF24_TxMode(TxAddress, 10);
   int button;
   int button2;
-
-
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -127,8 +125,7 @@ NRF24_TxMode(TxAddress, 10);
 	    	button = 0;
 	    	TxData[2] = button;
 	    }
-
-
+	  
 	    if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4)==1)
 	    {
 	    	button2 = 1;
@@ -140,13 +137,11 @@ NRF24_TxMode(TxAddress, 10);
 	    	TxData[3] = button2;
 	    }
 
-
-
-	      if (NRF24_Transmit(TxData) == 1)
-	  	  {
-	  		  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-	  		  HAL_Delay(100);
-	  	  }
+	    if (NRF24_Transmit(TxData) == 1)
+	    {
+	  	 HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+	  	 HAL_Delay(100);
+	    }
 	      HAL_Delay(10);
 
 
