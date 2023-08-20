@@ -51,7 +51,7 @@ uint8_t TxData[32];
 
 > TX모드 설정
 ```c
-NRF24_TxMode(TxAddress, 10);
+NRF24_TxMode(TxAddress, 10); 
 ```
 
 > ADC값 변환 후 가공
@@ -62,7 +62,23 @@ TxData[0] = HAL_ADC_GetValue(&hadc1)/27;
 TxData[1] = HAL_ADC_GetValue(&hadc1)/40;
 ```
 
+> 모드변경 스위치 부분
+```c
+if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_3)==1)
+	    {
+	    	button = 1;
+	    	TxData[2] = button;
+	    }
+	    if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_3)==0)
+	    {
+	    	button = 0;
+	    	TxData[2] = button;
+	    }
+```
+
 > 전송하는지 확인하기 위한 led 작동
+
+
 ```c
 if (NRF24_Transmit(TxData) == 1)
 	  	  {
