@@ -55,12 +55,13 @@
 
 ### 주요 코드
 
+> FDCAN 통신을 위한 모듈 초기화 및 파라미터 설정
 ```c
 MX_FDCAN1_Init();
 
 ```
-> FDCAN 통신을 위한 모듈 초기화 및 파라미터 설정
 
+> RF통신을 위한 모듈 초기화 및 설정들, 데이터 수신
 ```c
 NRF24_Init();
 uint8_t RxAddress[] = {0x00,0xDD,0xCC,0xBB,0xAA};
@@ -69,15 +70,15 @@ NRF24_ReadAll(data);//nrf rx
 
 ```
 
-> RF통신을 위한 모듈 초기화 및 설정들, 데이터 수신
 
+> 각 ECU들의 TxHeader.ID
 ```c
 TxHeader.Identifier = 0x11; // 라이다
 TxHeader.Identifier = 0x33; // 초음파, 조도센서
 TxHeader.Identifier = 0x44; // 라즈베리파이
 ```
-> 각 ECU들의 TxHeader.ID
 
+>  FIFO CallBack : STM32 사용
 ```c
 void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 {
@@ -94,8 +95,8 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 	  }
    }
 ```
->  FIFO CallBack
 
+>  BUFFER CallBack :라즈베리파이 사용
 ```c
 void HAL_FDCAN_RxBufferNewMessageCallback(FDCAN_HandleTypeDef *hfdcan)
 {
@@ -110,8 +111,8 @@ void HAL_FDCAN_RxBufferNewMessageCallback(FDCAN_HandleTypeDef *hfdcan)
 
 }
 ```
->  BUFFER CallBack
 
+> 각각의 ECU들의 ACK 전송
 ```c
         if (HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_BUFFER_NEW_MESSAGE, 0) != HAL_OK)
           {
@@ -127,8 +128,8 @@ void HAL_FDCAN_RxBufferNewMessageCallback(FDCAN_HandleTypeDef *hfdcan)
                 Error_Handler();
               }
 ```
-> 각각의 ECU들의 ACK 전송
 
+> Main의 While문
 ```c
   while (1)
   {
@@ -147,7 +148,7 @@ void HAL_FDCAN_RxBufferNewMessageCallback(FDCAN_HandleTypeDef *hfdcan)
 	  rpi_motor(); //CAN통신을 통해 받은 값으로 앞바퀴의 좌,우를 움직이는 함수
 	}
 ```
-> Main의 While문
+
 
 ### 라즈베리파이에서 STM32로 CAN통신
 
