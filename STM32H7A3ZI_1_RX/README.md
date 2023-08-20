@@ -33,7 +33,7 @@
 
 <img width="60%" img src="https://github.com/crasdok/capstone/assets/118472691/07dca26d-33f4-4e66-bbfc-56cf72ddde81">
 
-### 중요 코드
+### 주요 코드
 
 ```c
 MX_FDCAN1_Init();
