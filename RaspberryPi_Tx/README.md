@@ -42,7 +42,7 @@ top_right = (width * 11 // 12, height)
 bottom_right = (width * 11 // 12, height * 2 // 3)
 bottom_left = (width // 12, height * 2 // 3)
 roi_vertices = [top_left, top_right, bottom_right, bottom_left]
-
+```
 
 > 직선 검출
 ```python
@@ -57,6 +57,7 @@ mimg = cv2.addWeighted(src, 1, ccan, 1, 0)
 
 * 방향제어
 > arctan2 함수를 사용하여 각도를 계산하여 각도에 따른 진행 방향을 결정
+
 ```python
  line_arr2[i] = np.append(line_arr[i], np.array((np.arctan2(l[1] - l[3], l[0] - l[2]) * 180) / np.pi))
 ```
