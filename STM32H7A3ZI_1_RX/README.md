@@ -16,6 +16,20 @@
 
 > STM32H7A3ZI-Q보드, CAN Transciever, 모터, 모터드라이버, 헤드라이트
 
+### CAN통신을 사용한 이유
+
+<img width="60%" img src="https://github.com/crasdok/capstone/assets/118472691/e157f7d0-c303-4432-9d54-2087cfff16fa">
+
+> Multi Master 통신방식 (CAN 인터페이스 하나로 여러 개의 모듈을 제어할 수 있기) 때문에 연결선을 감소시켜 무게 절감. 
+> 추가적으로 ECU를 장착 하더라도 더욱 쉽게 확장할 수 있다는 장점을 가졌다.
+
+### CAN Transciever를 사용한 이유
+
+<img width="60%" img src="https://github.com/crasdok/capstone/assets/118472691/6c874e58-b85d-4297-8683-6466162876ed">
+
+> * 라즈베리파이에는 MCU내부에 CAN Controller가 존재하지 않기 때문에 MCP2515 사용
+> * STM32에는 MCU내부에 CAN Controller가 존재하기 때문에 CAN Transciever 사용
+
 ### 메인 박스 
 
 <img width="40%" img src="https://github.com/crasdok/capstone/assets/118472691/7f0f0740-1cec-481f-b73c-b1ab1f477958">
@@ -32,6 +46,12 @@
 ### 순서도 
 
 <img width="60%" img src="https://github.com/crasdok/capstone/assets/118472691/07dca26d-33f4-4e66-bbfc-56cf72ddde81">
+
+### CAN 프레임 구조
+
+
+<img width="70%" img src="https://github.com/crasdok/capstone/assets/118472691/02003407-f90e-4cd1-a414-18997733698d">
+
 
 ### 주요 코드
 
