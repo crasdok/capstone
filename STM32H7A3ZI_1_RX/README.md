@@ -149,6 +149,10 @@ void HAL_FDCAN_RxBufferNewMessageCallback(FDCAN_HandleTypeDef *hfdcan)
 ```
 > Main의 While문
 
+### 라즈베리파이에서 STM32로 CAN통신
+
+![](https://github.com/crasdok/capstone/assets/118472691/ffd34525-87b5-41d7-83ca-953b02066786)
+
 
 
 
