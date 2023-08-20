@@ -16,19 +16,11 @@ def DetectLineSlope(src):
     can = cv2.Canny(gray, 50, 200, None, 3)
 
     # 관심 구역 설정
-    # height = can.shape[0]
-    # rectangle = np.array([[(0, height), (120, 300), (520, 300), (640, height)]])
-    # mask = np.zeros_like(can)
-    # cv2.fillPoly(mask, rectangle, 255)
-    # masked_image = cv2.bitwise_and(can, mask)
-    # ccan = cv2.cvtColor(masked_image, cv2.COLOR_GRAY2BGR)
-    
     height, width = can.shape[:2]
     top_left = (width // 12, height)
     top_right = (width * 11 // 12, height)
     bottom_right = (width * 11 // 12, height * 2 // 3)
     bottom_left = (width // 12, height * 2 // 3)
-    # roi_vertices = [(0, height), (width // 3, height // 3), (width*2 // 3, height*2 // 3), (width, height)]
     roi_vertices = [top_left, top_right, bottom_right, bottom_left]
 
     mask = np.zeros_like(can)
@@ -40,20 +32,13 @@ def DetectLineSlope(src):
     hsv = cv2.cvtColor(src, cv2.COLOR_BGR2HSV)
     white_mask = cv2.inRange(hsv, lower_white, upper_white)
     filtered_roi = cv2.bitwise_and(roi, roi, mask=white_mask)
-    
-    #가우시안 블러(추가한 것 성능차이 잘 모르겠음)
+  
+    #가우시안 블러
     # ccan = cv2.GaussianBlur(ccan, (5, 5), 0)
     
-
     # 직선 검출
     line_arr = cv2.HoughLinesP(roi, 1, np.pi / 180, 20, minLineLength=10, maxLineGap=10)
 
-    # line color
-    # color = [0, 0, 255]
-    # thickness = 5
-    # for line in line_arr:
-    #   for x1, y1, x2, y2 in line:
-    #        cv2.line(ccan, (x1, y1), (x2, y2), color, thickness)
 
     # 중앙을 기준으로 오른쪽, 왼쪽 직선 분리
     line_R = np.empty((0, 5), int)
