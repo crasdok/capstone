@@ -63,8 +63,12 @@ mimg = cv2.addWeighted(src, 1, ccan, 1, 0)
 ```
 
 * CAN통신
-> 값 전달
+> 설정 및 값 전달
 ```python
+bus = can.Bus(interface='socketcan',
+              channel='can0',
+              receive_own_messages=True)
+
 message = can.Message(arbitration_id=0x44, is_extended_id=False,data=[0x52])
 bus.send(message, timeout=0.2)
 ```
