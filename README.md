@@ -49,7 +49,11 @@
 
 <img src="https://github.com/crasdok/capstone/assets/118472691/7d55455e-2d82-4735-b75a-c6cfbd8d08fb">
 
+> CAN통신 값을 통해 실행 되는 센서
+
 <img src="https://github.com/crasdok/capstone/assets/118472691/b5b2ef22-94be-4bad-b81d-e5aeea6a81f9">
+
+> RF통신 값을 통해 실행되는 원격 조종 및 인식 과정
 
 <br> [목차로 돌아가기](#1목차) <br>
 
@@ -60,7 +64,7 @@
 
 ![구상도](https://github.com/crasdok/capstone/assets/118472691/957f725b-7a13-4690-96ac-83ff8acd3b38)
 
-- 2개의 STM32H7A3ZI-Q 보드와 1개의 라즈베리파이, 1개의 STM32F411보드로 1개의 STM32H7A3ZI-Q 보드에 정보를 보냄
+- 조도,초음파센서 값을 보내는 STM32와 차선인식 값을 보내는 라즈베리파이, 주행모드,악셀,핸들 값을 보내는 1개의 STM32F411보드, 모든 값을 받는 STM32로 이루어져 있다.
 
 <br> [목차로 돌아가기](#1목차) <br>
 
