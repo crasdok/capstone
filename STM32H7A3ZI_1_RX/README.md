@@ -43,9 +43,17 @@
 | 모터 드라이버  | 모터의 전력을 공급하고 전류와 전압을 제어, 모터를 보호한다. |
 | 헤드라이트  | 전방을 밝히며 조도센서에 의해 밝기가 조절 된다. |
 
-### 순서도 
+### CAN통신 순서도 
 
 <img width="60%" img src="https://github.com/crasdok/capstone/assets/118472691/07dca26d-33f4-4e66-bbfc-56cf72ddde81">
+
+### 모터 제어 순서도
+
+![KakaoTalk_20230821_223311406](https://github.com/sc11046/adas_with_can_nrf/assets/121782720/0034f505-db18-4bf8-bcbc-024101b9b17a)
+
+
+
+
 
 ### CAN 프레임 구조
 
