@@ -26,6 +26,62 @@
 getData(&TF_Luna_1, &tfDist, &tfFlux, &tfTemp);
 ```
 
+* 이 함수는 TF-Luna 라이다 센서로부터 거리, 플럭스, 온도 데이터를 읽어와서 변환하고, 특정 조건에 따라 상태를 업데이트하며 이상 데이터를 처리하는 역할을 합니다.
+```c
+bool getData(TF_Luna_Lidar *tf_luna, int16_t *dist, int16_t *flux, int16_t *temp)
+{
+    tfStatus = TFL_READY;    // clear status of any error condition
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // Step 1 - Use the `HAL_I2C_MASTER_Receive` function `readReg` to fill the six byte
+    // `dataArray` from the contiguous sequence of registers `TFL_DIST_LO`
+    // to `TFL_TEMP_HI` that declared in the header file 'tfluna_i2c.h`.
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    for (uint8_t reg = TFL_DIST_LO; reg <= TFL_TEMP_HI; reg++)
+    {
+      if( !readReg(tf_luna, reg)) return false;
+          else dataArray[ reg] = regReply;
+    }
+
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    // Step 2 - Shift data from read array into the three variables
+    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+   *dist = dataArray[ 0] + ( dataArray[ 1] << 8);
+   *flux = dataArray[ 2] + ( dataArray[ 3] << 8);
+   *temp = dataArray[ 4] + ( dataArray[ 5] << 8);
+
+
+
+    // Convert temperature from hundredths
+    // of a degree to a whole number
+   *temp = *temp / 100;
+  //  *temp = *temp * 9 / 5 + 32;
+    // Then convert Celsius to degrees Fahrenheit
+
+
+    // - - Evaluate Abnormal Data Values - -
+    // Signal strength <= 100
+    if( *flux < (int16_t)100)
+    {
+      tfStatus = TFL_WEAK;
+      return false;
+    }
+    // Signal Strength saturation
+    else if( *flux == (int16_t)0xFFFF)
+    {
+      tfStatus = TFL_STRONG;
+      return false;
+    }
+    else
+    {
+      tfStatus = TFL_READY;
+      return true;
+    }
+
+}
+```
+
+
 * 측정 값을 FDCAN을 통해 송신 하는 코드
 ```c
 sprintf ((char *)TxData_Node1_To_Node3," %d%d%d",Dist1,Dist2,Dist3);
