@@ -43,15 +43,66 @@
 
 ## 주요 코드 
 
+
+
 > TX주소와 값의 길이 설정
 ```c
 uint8_t TxAddress[] = {0xEE,0xDD,0xCC,0xBB,0xAA};
 uint8_t TxData[32];
 ```
+> NRF24 Init
+```c
+void NRF24_Init (void)
+{
+	// disable the chip before configuring the device
+	CE_Disable();
+
+
+	// reset everything
+	nrf24_reset (0);
+
+	nrf24_WriteReg(CONFIG, 0);  // will be configured later
+
+	nrf24_WriteReg(EN_AA, 0);  // No Auto ACK
+
+	nrf24_WriteReg (EN_RXADDR, 0);  // Not Enabling any data pipe right now
+
+	nrf24_WriteReg (SETUP_AW, 0x03);  // 5 Bytes for the TX/RX address
+
+	nrf24_WriteReg (SETUP_RETR, 0);   // No retransmission
+
+	nrf24_WriteReg (RF_CH, 0);  // will be setup during Tx or RX
+
+	nrf24_WriteReg (RF_SETUP, 0x0E);   // Power= 0db, data rate = 2Mbps
+
+	// Enable the chip after configuring the device
+	CE_Enable();
+
+}
+```
 
 > TX모드 설정
 ```c
-NRF24_TxMode(TxAddress, 10); 
+
+void NRF24_TxMode (uint8_t *Address, uint8_t channel)
+{
+	// disable the chip before configuring the device
+	CE_Disable();
+
+	nrf24_WriteReg (RF_CH, channel);  // select the channel
+
+	nrf24_WriteRegMulti(TX_ADDR, Address, 5);  // Write the TX address
+
+
+	// power up the device
+	uint8_t config = nrf24_ReadReg(CONFIG);
+	config = config | (1<<1);   // write 1 in the PWR_UP bit
+//	config = config & (0xF2);    // write 0 in the PRIM_RX, and 1 in the PWR_UP, and all other bits are masked
+	nrf24_WriteReg (CONFIG, config);
+
+	// Enable the chip after configuring the device
+	CE_Enable();
+}
 ```
 
 > ADC값 변환 후 가공
