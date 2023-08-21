@@ -52,6 +52,22 @@
 
 <img width="70%" img src="https://github.com/crasdok/capstone/assets/118472691/02003407-f90e-4cd1-a414-18997733698d">
 
+> Start of Frame (SOF): 프레임의 시작을 나타내는 비트로, 높은 신호(0)로 시작됩니다.
+>
+> Arbitration ID (11 또는 29 비트)
+>
+> Remote Transmission Request (RTR): 데이터 프레임인지 아니면 리모트 프레임인지를 나타내는 비트입니다.
+>
+> Control Bits: 에러 처리 및 메시지 길이 정보를 포함하는 비트입니다.
+>
+> Data Field: 실제 데이터를 포함하는 부분입니다.
+>
+> Cyclic Redundancy Check (CRC): 에러 체크를 위한 CRC 코드로, 데이터의 무결성을 확인하는 데 사용됩니다.
+>
+> ACK Slot: 수신 노드가 메시지를 정상적으로 수신했음을 알려주는 비트입니다.
+>
+> End of Frame (EOF): 프레임의 끝을 나타내는 비트로, 높은 신호(1)로 끝납니다.
+
 
 ### 주요 코드
 
@@ -99,6 +115,8 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 ```
 
 >  BUFFER CallBack :라즈베리파이 사용
+>  <br/>
+> 이 코드는 FDCAN1 모듈의 Rx 버퍼0에서 새로운 메시지가 도착할 때마다 해당 메시지를 읽어오는 기능을 수행합니다.
 ```c
 void HAL_FDCAN_RxBufferNewMessageCallback(FDCAN_HandleTypeDef *hfdcan)
 {
