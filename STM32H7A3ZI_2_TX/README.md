@@ -78,6 +78,13 @@ void HCSR04_Read (void)
 }
 ```
 
+* 결과적으로 이 코드는 ADC 변환을 시작하고, 변환이 완료될 때까지 기다린 후 변환 결과 값을 가져와서 조정한 뒤 adc1 변수에 저장하는 역할을 수행합니다.
+```c
+	  HAL_ADC_Start(&hadc1);
+	  HAL_ADC_PollForConversion(&hadc1, 10);
+	  adc1 = HAL_ADC_GetValue(&hadc1)/650;
+```
+
 * 측정 값을 FDCAN을 통해 송신 하는 코드
 ```c
 sprintf ((char *)TxData_Node3_To_Node2," %d%d%d%d",D1_1,D1_2,D1_3,D2_1);
