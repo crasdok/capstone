@@ -2,7 +2,6 @@
 
 ### [목차로](https://github.com/crasdok/capstone/blob/main/README.md)
 
-## HardWare
 
 ### 사용 보드 및 모듈
 <img width="20%" img src="https://github.com/crasdok/capstone/assets/118472691/cfe702d3-d627-4ac1-bfec-9163f5f86fbb">
@@ -20,7 +19,8 @@
 | CAN Transciever | CAN 버스 네트워크에서 신호 변환, 신호 강화 및 수신, 전송제어 등의 역할을 수행한다. |
 | Lidar | 초음파 센서보다 정확한 거리 측정이 가능하다 |
 
-## SoftWare
+## 코드부분
+
 * getData 함수를 이용해 거리, 온도, 신호 강도를 측정
 ```c
 getData(&TF_Luna_1, &tfDist, &tfFlux, &tfTemp);
