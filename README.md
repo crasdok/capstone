@@ -51,9 +51,6 @@
 
 > CAN통신 값을 통해 실행 되는 센서
 
-<img src="https://github.com/crasdok/capstone/assets/118472691/b5b2ef22-94be-4bad-b81d-e5aeea6a81f9">
-
-> RF통신 값을 통해 실행되는 원격 조종 및 인식 과정
 
 <br> [목차로 돌아가기](#1목차) <br>
 
