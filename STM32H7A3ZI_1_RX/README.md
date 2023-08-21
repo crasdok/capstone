@@ -45,7 +45,7 @@
 
 ### CAN통신 순서도 
 
-<img width="60%" img src="https://github.com/crasdok/capstone/assets/118472691/07dca26d-33f4-4e66-bbfc-56cf72ddde81">
+<img width="120%" img src="https://github.com/crasdok/capstone/assets/118472691/fd8284e3-5e3c-4b65-bdee-68822bbe90eb">
 
 ### 모터 제어 순서도
 
