@@ -78,7 +78,9 @@ TxHeader.Identifier = 0x33; // 초음파, 조도센서
 TxHeader.Identifier = 0x44; // 라즈베리파이
 ```
 
->  FIFO CallBack : STM32 사용
+> FIFO CallBack : STM32 사용
+>  <br/>
+>  이 코드는 FDCAN1 모듈의 FIFO0에서 새로운 메시지가 도착할 때마다 해당 메시지를 읽어오는 기능을 수행합니다.
 ```c
 void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 {
