@@ -28,7 +28,9 @@
 | CAN Transciever | CAN 버스 네트워크에서 신호 변환, 신호 강화 및 수신, 전송제어 등의 역할을 수행한다. |
 | Lidar | 초음파 센서보다 정확한 거리 측정이 가능하다 |
 
-### 
+### 라이다 센서 거리 특정 과정
+
+<img width="90%" img src="https://github.com/crasdok/capstone/assets/118472691/647625fb-178b-4e52-8cc9-e91b626c1710">
 
 ## 코드부분
 
