@@ -10,10 +10,10 @@
 
 > 1. Multi Master 통신방식 (CAN 인터페이스 하나로 여러 개의 모듈을 제어할 수 있기) 때문에 연결선을 감소시켜 무게 절감.
 > 2. 추가적으로 ECU를 장착 하더라도 더욱 쉽게 확장할 수 있다는 장점을 가졌다.
-> 3. 안정적이고 신뢰성 있는 통신: CAN은 실시간 통신을 지원하며, 오류 검출 및 복구 메커니즘을 내장하고 있어서 안정적인 데이터 교환을 제공합니다.
-> 4. 실시간 응용에 적합: CAN은 실시간 통신을 지원하여 시간에 민감한 응용에서 사용됩니다.
-> 5. 안정적인 환경에서 동작: CAN은 강한 전자기적 간섭(EMI) 및 노이즈에도 강한 환경에서 동작할 수 있는 프로토콜입니다.
-> 6. 비용 효율성: CAN은 비교적 저렴하게 구현될 수 있으며, 복잡한 네트워크도 상대적으로 저비용으로 구축할 수 있습니다.
+> 3. 안정적이고 신뢰성 있는 통신: CAN은 실시간 통신을 지원하며, 오류 검출 및 복구 메커니즘을 내장하고 있어서 안정적인 데이터 교환을 제공한다.
+> 4. 실시간 응용에 적합: CAN은 실시간 통신을 지원하여 시간에 민감한 응용에서 사용된다.
+> 5. 안정적인 환경에서 동작: CAN은 강한 전자기적 간섭(EMI) 및 노이즈에도 강한 환경에서 동작할 수 있는 프로토콜이다.
+> 6. 비용 효율성: CAN은 비교적 저렴하게 구현될 수 있으며, 복잡한 네트워크도 상대적으로 저비용으로 구축할 수 있다.
 
 
 ### CAN Transciever를 사용한 이유
@@ -32,21 +32,21 @@
 
 <img width="70%" img src="https://github.com/crasdok/capstone/assets/118472691/02003407-f90e-4cd1-a414-18997733698d">
 
-> Start of Frame (SOF): 프레임의 시작을 나타내는 비트로, 높은 신호(0)로 시작됩니다.
+> Start of Frame (SOF): 프레임의 시작을 나타내는 비트로, 높은 신호(0)로 시작된다.
 >
 > Arbitration ID (11 또는 29 비트)
 >
-> Remote Transmission Request (RTR): 데이터 프레임인지 아니면 리모트 프레임인지를 나타내는 비트입니다.
+> Remote Transmission Request (RTR): 데이터 프레임인지 아니면 리모트 프레임인지를 나타내는 비트이다.
 >
-> Control Bits: 에러 처리 및 메시지 길이 정보를 포함하는 비트입니다.
+> Control Bits: 에러 처리 및 메시지 길이 정보를 포함하는 비트이다.
 >
-> Data Field: 실제 데이터를 포함하는 부분입니다.
+> Data Field: 실제 데이터를 포함하는 부분이다.
 >
-> Cyclic Redundancy Check (CRC): 에러 체크를 위한 CRC 코드로, 데이터의 무결성을 확인하는 데 사용됩니다.
+> Cyclic Redundancy Check (CRC): 에러 체크를 위한 CRC 코드로, 데이터의 무결성을 확인하는 데 사용된다.
 >
-> ACK Slot: 수신 노드가 메시지를 정상적으로 수신했음을 알려주는 비트입니다.
+> ACK Slot: 수신 노드가 메시지를 정상적으로 수신했음을 알려주는 비트이다.
 >
-> End of Frame (EOF): 프레임의 끝을 나타내는 비트로, 높은 신호(1)로 끝납니다.
+> End of Frame (EOF): 프레임의 끝을 나타내는 비트로, 높은 신호(1)로 끝난다.
 
 
 
@@ -147,13 +147,13 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 	  }
    }
 ```
->  이 코드는 FDCAN1 모듈의 FIFO0에서 새로운 메시지가 도착할 때마다 해당 메시지를 읽어오는 기능을 수행합니다.
+>  이 코드는 FDCAN1 모듈의 FIFO0에서 새로운 메시지가 도착할 때마다 해당 메시지를 읽어오는 기능을 수행한다.
 > <br/>
-> HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_FIFO0, &RxHeader, RxData_From_Node3): 이 함수는 FDCAN 수신 FIFO0에서 메시지를 가져옵니다.
+> HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_FIFO0, &RxHeader, RxData_From_Node3): 이 함수는 FDCAN 수신 FIFO0에서 메시지를 가져온다.
 > <br/>
-> hfdcan은 FDCAN 핸들, FDCAN_RX_FIFO0은 사용할 수신 FIFO 번호, RxHeader는 메시지의 헤더 정보를 저장할 변수, RxData_From_Node3는 메시지 데이터를 저장할 버퍼입니다.
+> hfdcan은 FDCAN 핸들, FDCAN_RX_FIFO0은 사용할 수신 FIFO 번호, RxHeader는 메시지의 헤더 정보를 저장할 변수, RxData_From_Node3는 메시지 데이터를 저장할 버퍼이다.
 > <br/>
-> 만약 메시지 가져오기가 실패하면 Error_Handler() 함수가 호출됩니다.
+> 만약 메시지 가져오기가 실패하면 Error_Handler() 함수가 호출된다.
 
 *  BUFFER CallBack :라즈베리파이 에서 데이터를 받는데에 사용
 ```c
@@ -170,13 +170,13 @@ void HAL_FDCAN_RxBufferNewMessageCallback(FDCAN_HandleTypeDef *hfdcan)
 
 }
 ```
-> 이 코드는 FDCAN1 모듈의 Rx 버퍼0에서 새로운 메시지가 도착할 때마다 해당 메시지를 읽어오는 기능을 수행합니다.
+> 이 코드는 FDCAN1 모듈의 Rx 버퍼0에서 새로운 메시지가 도착할 때마다 해당 메시지를 읽어오는 기능을 수행한다.
 > <br/>
-> HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_BUFFER0, &RxHeader, RxData_From_Node4): 이 함수는 FDCAN 수신 버퍼에서 메시지를 가져옵니다.
+> HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_BUFFER0, &RxHeader, RxData_From_Node4): 이 함수는 FDCAN 수신 버퍼에서 메시지를 가져온다.
 > <br/>
-> hfdcan은 FDCAN 핸들, FDCAN_RX_BUFFER0은 사용할 수신 버퍼의 번호, RxHeader는 메시지의 헤더 정보를 저장할 변수, RxData_From_Node4는 메시지 데이터를 저장할 버퍼입니다.
+> hfdcan은 FDCAN 핸들, FDCAN_RX_BUFFER0은 사용할 수신 버퍼의 번호, RxHeader는 메시지의 헤더 정보를 저장할 변수, RxData_From_Node4는 메시지 데이터를 저장할 버퍼이다.
 > <br/>
-> 만약 메시지 가져오기가 실패하면 Error_Handler() 함수가 호출됩니다.
+> 만약 메시지 가져오기가 실패하면 Error_Handler() 함수가 호출된다.
 
 
 * 각각의 ECU들의 ACK 전송
@@ -205,7 +205,7 @@ void HAL_FDCAN_RxBufferNewMessageCallback(FDCAN_HandleTypeDef *hfdcan)
         Error_Handler();
     }
 ```
->  문자열 포맷팅으로 데이터를 문자열로 변환하고, 그 문자열 데이터를 CAN 메시지의 데이터 부분에 넣어서 전송하는 것입니다. 이로써 다양한 센서 데이터나 상태 정보를 CAN 메시지로 전송하여 통신하는 기능을 구현할 수 있습니다.
+>  문자열 포맷팅으로 데이터를 문자열로 변환하고, 그 문자열 데이터를 CAN 메시지의 데이터 부분에 넣어서 전송하는 것이다. 이로써 다양한 센서 데이터나 상태 정보를 CAN 메시지로 전송하여 통신하는 기능을 구현할 수 있다.
 
 * 라즈베리파이 CAN통신 코드
 
@@ -227,11 +227,11 @@ bus.send(message, timeout=0.2) // bus.send 함수를 호출하여 메시지를 �
 ```python
 sudo ifconfig can0 txqueuelen 10000
 ```
-> * 고대역폭 활용: CAN 네트워크에서 많은 양의 메시지를 처리해야 할 때, 높은 큐 길이는 대역폭을 더 효율적으로 활용할 수 있습니다.
-> * 대량 데이터 전송: 대량의 CAN 메시지를 전송해야 할 경우, 큐 길이를 늘려서 한 번에 더 많은 메시지를 보낼 수 있습니다.
-> * 효율적인 트래픽 관리: CAN 네트워크에서 네트워크 트래픽의 혼잡을 완화할 수 있습니다. 큐 길이를 늘려서 패킷 충돌이나 데이터 손실을 방지할 수 있습니다.
-> * 응답 시간 개선: 큰 큐 길이를 사용하면 패킷이 큐에 더 오래 남아있어서 더 빠른 응답 시간을 얻을 수 있습니다.
-> * 고속 통신에서의 안정성: 높은 속도의 CAN 통신 환경에서 큰 큐 길이는 안정성과 데이터 정확성을 향상시킬 수 있습니다.
+> * 고대역폭 활용: CAN 네트워크에서 많은 양의 메시지를 처리해야 할 때, 높은 큐 길이는 대역폭을 더 효율적으로 활용할 수 있다.
+> * 대량 데이터 전송: 대량의 CAN 메시지를 전송해야 할 경우, 큐 길이를 늘려서 한 번에 더 많은 메시지를 보낼 수 있다.
+> * 효율적인 트래픽 관리: CAN 네트워크에서 네트워크 트래픽의 혼잡을 완화할 수 있다. 큐 길이를 늘려서 패킷 충돌이나 데이터 손실을 방지할 수 있다.
+> * 응답 시간 개선: 큰 큐 길이를 사용하면 패킷이 큐에 더 오래 남아있어서 더 빠른 응답 시간을 얻을 수 있다.
+> * 고속 통신에서의 안정성: 높은 속도의 CAN 통신 환경에서 큰 큐 길이는 안정성과 데이터 정확성을 향상시킬 수 있다.
 
 ### 라즈베리파이에서 STM32로 CAN통신
 
