@@ -25,16 +25,17 @@
 
 ###  주요 기능 
 ------------
-* 차선 인식
-> 흑백화
+## 차선 인식
+
+* 흑백화
 ```python
 gray = cv2.cvtColor(src, cv2.COLOR_BGR2GRAY)
 ```
-> 모서리 검출
+* 모서리 검출
 ```python
 can = cv2.Canny(gray, 50, 200, None, 3)
 ```
-> 관심구역 설정
+* 관심구역 설정
 ```python
 height, width = can.shape[:2]
 top_left = (width // 12, height)
@@ -44,11 +45,54 @@ bottom_left = (width // 12, height * 2 // 3)
 roi_vertices = [top_left, top_right, bottom_right, bottom_left]
 ```
 
-> 직선 검출
+* 직선 검출
 ```python
 line_arr = cv2.HoughLinesP(masked_image, 1, np.pi / 180, 20, minLineLength=10, maxLineGap=10)
 ```
-> 원본에 합성
+
+* Hough 변환을 사용하여 왼쪽과 오른쪽차선을 구분, 기울기를 계산
+```python
+    line_R = np.empty((0, 5), int)
+    line_L = np.empty((0, 5), int)
+    if line_arr is not None:
+        line_arr2 = np.empty((len(line_arr), 5), int)
+        for i in range(0, len(line_arr)):
+            temp = 0
+            l = line_arr[i][0]
+            line_arr2[i] = np.append(line_arr[i], np.array((np.arctan2(l[1] - l[3], l[0] - l[2]) * 180) / np.pi))
+            if line_arr2[i][1] > line_arr2[i][3]:
+                temp = line_arr2[i][0], line_arr2[i][1]
+                line_arr2[i][0], line_arr2[i][1] = line_arr2[i][2], line_arr2[i][3]
+                line_arr2[i][2], line_arr2[i][3] = temp
+            if line_arr2[i][0] < 320 and (abs(line_arr2[i][4]) < 170 and abs(line_arr2[i][4]) > 95):
+                line_L = np.append(line_L, line_arr2[i])
+            elif line_arr2[i][0] > 320 and (abs(line_arr2[i][4]) < 170 and abs(line_arr2[i][4]) > 95):
+                line_R = np.append(line_R, line_arr2[i])
+    line_L = line_L.reshape(int(len(line_L) / 5), 5)
+    line_R = line_R.reshape(int(len(line_R) / 5), 5)
+
+    # 중앙과 가까운 오른쪽, 왼쪽 선을 최종 차선으로 인식
+    try:
+        line_L = line_L[line_L[:, 0].argsort()[-1]]
+        degree_L = line_L[4]
+        cv2.line(ccan, (line_L[0], line_L[1]), (line_L[2], line_L[3]), (255, 0, 0), 10, cv2.LINE_AA)
+    except:
+        degree_L = 0
+    try:
+        line_R = line_R[line_R[:, 0].argsort()[0]]
+        degree_R = line_R[4]
+        cv2.line(ccan, (line_R[0], line_R[1]), (line_R[2], line_R[3]), (255, 0, 0), 10, cv2.LINE_AA)
+    except:
+        degree_R = 0
+```
+> * line_R과 line_L은 각각 오른쪽 차선과 왼쪽 차선을 저장할 배열입니다.
+> * line_arr이 비어있지 않으면, line_arr2 배열을 생성하고 각 직선의 정보에 각도 정보를 추가합니다. 이 각도는 np.arctan2를 사용하여 계산됩니다.
+> * line_arr2[i][1] > line_arr2[i][3] 조건을 통해 차선의 두 점을 x 좌표에 따라 정렬합니다. 이는 왼쪽과 오른쪽을 구분하기 위해 필요한 조작입니다.
+> * line_arr2[i][0]의 위치에 따라 차선을 왼쪽과 오른쪽으로 구분하며, 각도 조건을 만족하는 경우 해당 차선을 각각 line_L과 line_R에 추가합니다.
+
+
+
+* 원본에 합성
 ```python
 mimg = cv2.addWeighted(src, 1, ccan, 1, 0)
 ```
@@ -62,7 +106,47 @@ mimg = cv2.addWeighted(src, 1, ccan, 1, 0)
  line_arr2[i] = np.append(line_arr[i], np.array((np.arctan2(l[1] - l[3], l[0] - l[2]) * 180) / np.pi))
 ```
 
+* 여러차례 테스트를 통해 차선 좌,우 인식률을 개선한 코드
+```python
+    if ret: // 카메라에서 프레임을 읽어오는데 성공했을 경우
+        frame = cv2.resize(frame, (480, 270)) // 프레임의 크기를 (480, 270)으로 조정
+        cv2.imshow('ImageWindow', DetectLineSlope(frame)[0]) // 화면에 이미지를 표시, DetectLineSlope 함수는 이미지 내에서 차선을 감지하고 그 결과를 반환. [0] 인덱스를 사용하여 이미지 결과를 선택
+        l, r = DetectLineSlope(frame)[1], DetectLineSlope(frame)[2] // 함수의 반환값 중에서 왼쪽 차선의 기울기를 나타내는 degree_L과 오른쪽 차선의 기울기를 나타내는 degree_R을 가져옴.
 
+        if l == 0 or r == 0:
+            if (105 <= l and l<= 112) or (105 <= r and r<= 112) :
+                print('right')
+            elif (112 < l and l<= 200) or (112 < r and r<= 200) :
+                print('Hard right')
+            elif (90 < abs(l) and abs(l)< 105) or (90 < abs(r) and abs(r)< 105) :
+                print('go')
+            elif ( l < -113 ) or ( r < -113) :
+                print('Hard left')
+            else :
+                print('left')
+
+        elif l == 0 and r == 0  :
+            print('go')
+        elif (90 < abs(l) and abs(l)< 105) and (90 < abs(r) and abs(r)< 105) :
+            print('go')
+         elif (105 <= l and l<= 112) and (95 <= r and r<= 112) :
+            print('right')
+        elif (112 < l and l<= 200) and (98 <= r and r<= 200) :
+            print('Hard right')
+        elif ( l < -113 ) and ( r < -113) :
+            print('Hard left')
+
+        else :
+            print('left')
+```
+> 차선 감지 결과인 degree_L과 degree_R 값을 기반으로 다양한 상황에 따라 조향 명령을 생성
+
+
+* 'q' 키가 눌렸을 때 루프를 종료하기 위한 코드
+```python
+if cv2.waitKey(1) & 0xff == ord('q'): 
+   break
+```
 
 
 > 방향제어 예시
