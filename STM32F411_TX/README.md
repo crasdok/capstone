@@ -307,4 +307,15 @@ void NRF24_Receive (uint8_t *data)
 ```
 > 이 함수는 NRF24 모듈로부터 데이터를 수신하고, 수신된 데이터를 data 배열에 저장합니다. 또한, 데이터 수신 완료 후 RX FIFO 버퍼를 비우는 작업을 수행합니다.
 
+* NRF24 모듈로부터 데이터가 수신 가능한지를 확인하고, 수신 가능한 경우에는 데이터를 수신하여 RxData 배열에 저장하는 코드
+```c
+	  if (isDataAvailable(2) == 1)
+	  {
+		  NRF24_Receive(RxData);
+	  }
+```
+
+> * isDataAvailable 함수를 사용하여 파이프 번호 2에서 데이터가 수신 가능한지를 확인
+> * NRF24_Receive 함수를 호출하고, 수신된 데이터를 RxData 배열에 저장
+
 <br> [위로](#STM32F411) <br>
