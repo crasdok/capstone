@@ -2,6 +2,13 @@
 
 ### [목차로](https://github.com/crasdok/capstone/blob/main/README.md)
 
+## 목차
+- [사용 보드 및 모듈](#사용-보드-및-모듈)
+- [메인 박스](#메인-박스)
+- [Function Diagram](#Function-Diagram)
+- [코드](#코드)
+- [기능 구현 영상](#기능-구현-영상)
+
 ### 사용 보드 및 모듈
 
 <img width="20%" img src="https://github.com/crasdok/capstone/assets/118472691/cfe702d3-d627-4ac1-bfec-9163f5f86fbb">
@@ -151,6 +158,10 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 > * 계산된 시간 간격을 거리로 변환합니다.
 > * 다음 캡처를 위해 변수들을 재설정하고, 캡처를 상승 에지로 설정합니다.
 > * 채널 2,4 또한 반복과정
+## 순서도
+
+
+<br> [위로](#초음파센서-및-조도센서-STM32) <br>
 
 * 초음파 발사 및 정지
 ```c
@@ -194,6 +205,13 @@ void HCSR04_Read4 (void)
 ```
 
 > adc1값에 650을 나눈 이유는 16비트 ADC값이기 때문에 최댓값 65535을 100으로 맞추기 위해 나누었다.
+
+
+## 기능 구현 영상
+
+조도, 초음파
+
+
 
 
 
