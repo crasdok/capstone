@@ -2,6 +2,14 @@
 
 ### [목차로](https://github.com/crasdok/capstone/blob/main/README.md)
 
+## 바로가기
+
+- [순서도](#순서도)
+- [RF통신 사용 이유](#RF통신을-사용한-이유)
+- [송신부 코드](#송신부-코드)
+- [수신부 코드](#수신부-코드)
+- [Live Expression](#RF-통신중-Live-Expression-화면-영상)
+
 * 사용 보드 및 모듈
 
 <img width="15%" img src="https://github.com/crasdok/capstone/assets/118472691/41401bde-bbf7-4947-a453-83145d4e18fd">
@@ -41,9 +49,9 @@
 | 토글 스위치 | 전후진 과 주행모드를 선택할 수 있게 해준다. |
 | 가변저항  | 악셀이 어느정도 밟았는지 와 핸들이 어느정도 위치에 있는지 값으로 나타내준다. |
 
-## 주요 코드 
+ 
 
-## 송신부
+## 송신부 코드
 
 * 데이터 주소와 값의 길이 설정
 ```c
@@ -190,7 +198,7 @@ RxData[2] = 전후진 모드변경 스위치 값
 RxData[3] = 주행모드 변경 스위치 값
 ```
 
-## 수신부
+## 수신부 코드
 
 * Rxmode 설정
 
@@ -317,5 +325,10 @@ void NRF24_Receive (uint8_t *data)
 
 > * isDataAvailable 함수를 사용하여 파이프 번호 2에서 데이터가 수신 가능한지를 확인
 > * NRF24_Receive 함수를 호출하고, 수신된 데이터를 RxData 배열에 저장
+
+
+## RF 통신중 Live Expression 화면 영상
+
+
 
 <br> [위로](#STM32F411) <br>
