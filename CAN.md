@@ -209,6 +209,26 @@ void HAL_FDCAN_RxBufferNewMessageCallback(FDCAN_HandleTypeDef *hfdcan)
 
 * 라즈베리파이 CAN통신 코드
 
+### Raspberry Pi CAN 초기화 및 설정
+> 라즈베리파이에 CAN Controller Module을 사용하기 위해선 config.txt 를 수정해야 함
+> 수정 후 재부팅해주어야 적용완료가 됨
+```python
+dtoverlay=mcp2515-can0,oscillator=16000000,interrupt=12
+dtoverlay=spi-bcm2835-overlay
+```
+>  재부팅 후 CAN 유틸리티 다운로드(터미널)
+```python
+sudo apt-get install can-utils
+```
+> CAN 활성화(터미널)
+```python
+sudo ip link set can0 up type can bitrate 4000000
+```
+> CAN이 정상적으로 작동이 확인하는 코드(터미널)
+```python
+sudo ifconfig can0
+```
+
 * CAN통신 설정, 초기화 
 ```python
 bus = can.Bus(interface='socketcan', // 사용할 CAN 인터페이스를 지정
