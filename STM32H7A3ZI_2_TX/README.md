@@ -150,13 +150,13 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 }
 ```
 > 순서
-> 1. 함수 내부에서 htim->Channel 값에 따라 다른 채널의 입력 캡처 인터럽트를 처리합니다.
-> 2. Is_First_Captured_x 변수는 각 채널의 첫 번째 캡처 값이 캡처되었는지 여부를 나타냅니다.
-> 3. 최초로 캡처되지 않은 경우, IC_Val1_1에 첫 번째 값을 저장하고 캡처가 되었음을 표시하며, 캡처를 하강 에지로 설정합니다.
-> 4. 이미 첫 번째 캡처가 된 경우, 두 번째 값을 IC_Val2_1에 저장하고 타이머 카운터를 초기화합니다.
-> 5. IC_Val2_1과 IC_Val1_1의 크기에 따라 두 값의 차이를 계산합니다.
-> 6. 계산된 시간 간격을 거리로 변환합니다.
-> 7. 다음 캡처를 위해 변수들을 재설정하고, 캡처를 상승 에지로 설정합니다.
+> 1. 함수 내부에서 htim->Channel 값에 따라 다른 채널의 입력 캡처 인터럽트를 처리한다.
+> 2. Is_First_Captured_x 변수는 각 채널의 첫 번째 캡처 값이 캡처되었는지 여부를 나타낸다.
+> 3. 최초로 캡처되지 않은 경우, IC_Val1_1에 첫 번째 값을 저장하고 캡처가 되었음을 표시하며, 캡처를 하강 에지로 설정한다.
+> 4. 이미 첫 번째 캡처가 된 경우, 두 번째 값을 IC_Val2_1에 저장하고 타이머 카운터를 초기화한다.
+> 5. IC_Val2_1과 IC_Val1_1의 크기에 따라 두 값의 차이를 계산한다.
+> 6. 계산된 시간 간격을 거리로 변환한다.
+> 7. 다음 캡처를 위해 변수들을 재설정하고, 캡처를 상승 에지로 설정한다.
 > * 채널 2,4 또한 반복과정
 
 
@@ -167,37 +167,37 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 ```c
 void HCSR04_Read1 (void)
 {
-   HAL_GPIO_WritePin(TRIG_PORT1, TRIG_PIN1, GPIO_PIN_SET);  // TRIG 핀을 HIGH로 설정하여 초음파 발신 신호를 보냅니다.
+   HAL_GPIO_WritePin(TRIG_PORT1, TRIG_PIN1, GPIO_PIN_SET);  // TRIG 핀을 HIGH로 설정하여 초음파 발신 신호를 보냄.
    delay(10);  // wait for 10 us
-   HAL_GPIO_WritePin(TRIG_PORT1, TRIG_PIN1, GPIO_PIN_RESET);  // TRIG 핀을 LOW로 설정하여 초음파 발신 신호를 종료합니다.
+   HAL_GPIO_WritePin(TRIG_PORT1, TRIG_PIN1, GPIO_PIN_RESET);  // TRIG 핀을 LOW로 설정하여 초음파 발신 신호를 종료.
 
-   __HAL_TIM_ENABLE_IT(&htim3, TIM_IT_CC1); // 타이머 3의 입력 캡처 채널 1 인터럽트를 활성화합니다.
+   __HAL_TIM_ENABLE_IT(&htim3, TIM_IT_CC1); // 타이머 3의 입력 캡처 채널 1 인터럽트를 활성화.
 
 }
 void HCSR04_Read2 (void)
 {
-   HAL_GPIO_WritePin(TRIG_PORT2, TRIG_PIN2, GPIO_PIN_SET);  // TRIG 핀을 HIGH로 설정하여 초음파 발신 신호를 보냅니다.
+   HAL_GPIO_WritePin(TRIG_PORT2, TRIG_PIN2, GPIO_PIN_SET);  // TRIG 핀을 HIGH로 설정하여 초음파 발신 신호를 보냄.
    delay(10);  
-   HAL_GPIO_WritePin(TRIG_PORT2, TRIG_PIN2, GPIO_PIN_RESET);  // TRIG 핀을 LOW로 설정하여 초음파 발신 신호를 종료합니다.
+   HAL_GPIO_WritePin(TRIG_PORT2, TRIG_PIN2, GPIO_PIN_RESET);  // TRIG 핀을 LOW로 설정하여 초음파 발신 신호를 종료.
 
-   __HAL_TIM_ENABLE_IT(&htim3, TIM_IT_CC2); // 타이머 3의 입력 캡처 채널 2 인터럽트를 활성화합니다.
+   __HAL_TIM_ENABLE_IT(&htim3, TIM_IT_CC2); // 타이머 3의 입력 캡처 채널 2 인터럽트를 활성화.
 
 }
 void HCSR04_Read4 (void)
 {
-   HAL_GPIO_WritePin(TRIG_PORT4, TRIG_PIN4, GPIO_PIN_SET);  // TRIG 핀을 HIGH로 설정하여 초음파 발신 신호를 보냅니다.
+   HAL_GPIO_WritePin(TRIG_PORT4, TRIG_PIN4, GPIO_PIN_SET);  // TRIG 핀을 HIGH로 설정하여 초음파 발신 신호를 보낸다.
    delay(10);  
-   HAL_GPIO_WritePin(TRIG_PORT4, TRIG_PIN4, GPIO_PIN_RESET);  // TRIG 핀을 LOW로 설정하여 초음파 발신 신호를 종료합니다.
+   HAL_GPIO_WritePin(TRIG_PORT4, TRIG_PIN4, GPIO_PIN_RESET);  // TRIG 핀을 LOW로 설정하여 초음파 발신 신호를 종료.
 
-   __HAL_TIM_ENABLE_IT(&htim3, TIM_IT_CC4); // 타이머 3의 입력 캡처 채널 4 인터럽트를 활성화합니다.
+   __HAL_TIM_ENABLE_IT(&htim3, TIM_IT_CC4); // 타이머 3의 입력 캡처 채널 4 인터럽트를 활성화.
 
 }
 ```
-> 초음파 거리 측정 센서는 초음파 신호를 발사하고 해당 신호가 물체에서 반사된 후 걸리는 시간을 측정하여 거리를 계산하는 원리로 동작합니다.
+> 초음파 거리 측정 센서는 초음파 신호를 발사하고 해당 신호가 물체에서 반사된 후 걸리는 시간을 측정하여 거리를 계산하는 원리로 동작.
 > <br/>
-> 이 코드를 통해 타이머가 초음파 발신과 수신 시간을 측정하여 거리를 계산하게 됩니다.
+> 이 코드를 통해 타이머가 초음파 발신과 수신 시간을 측정하여 거리를 계산하게 된다.
 
-* 이 코드는 ADC 변환을 시작하고, 변환이 완료될 때까지 기다린 후 변환 결과 값(조도 값)을 가져와서 조정한 뒤 adc1 변수에 저장하는 역할을 수행합니다.
+* 이 코드는 ADC 변환을 시작하고, 변환이 완료될 때까지 기다린 후 변환 결과 값(조도 값)을 가져와서 조정한 뒤 adc1 변수에 저장하는 역할을 수행한다.
 ```c
 HAL_ADC_Start(&hadc1);
 HAL_ADC_PollForConversion(&hadc1, 10);
