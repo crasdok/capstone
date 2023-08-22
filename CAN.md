@@ -25,7 +25,7 @@
 
 ### CAN통신 순서도 
 
-<img width="120%" img src="https://github.com/crasdok/capstone/assets/118472691/fd8284e3-5e3c-4b65-bdee-68822bbe90eb">
+<img width="120%" img src="https://github.com/crasdok/capstone/assets/118472691/5d2bb8fc-c130-45b9-b615-68fb2368fe94">
 
 ### CAN 프레임 구조
 
