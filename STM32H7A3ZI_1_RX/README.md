@@ -177,6 +177,17 @@ void HAL_FDCAN_RxBufferNewMessageCallback(FDCAN_HandleTypeDef *hfdcan)
 	}
 ```
 
+* 라즈베리파이 CAN통신 코드
+> 설정 및 값 전달
+```python
+bus = can.Bus(interface='socketcan',
+              channel='can0',
+              receive_own_messages=True)
+
+message = can.Message(arbitration_id=0x44, is_extended_id=False,data=[0x52])
+bus.send(message, timeout=0.2)
+```
+
 
 ### 라즈베리파이에서 STM32로 CAN통신
 
