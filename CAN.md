@@ -129,15 +129,14 @@ message = can.Message(arbitration_id=0x44, is_extended_id=False,data=[0x4C]) // 
 > * TxHeader.Id = 0x44; // 라즈베리파이
 
 
-* FIFO CallBack : STM32 사용
->  <br/>
->  이 코드는 FDCAN1 모듈의 FIFO0에서 새로운 메시지가 도착할 때마다 해당 메시지를 읽어오는 기능을 수행합니다.
+* FIFO CallBack : STM32 2개에 사용
+
 ```c
 void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 {
-   if(FDCAN1 == hfdcan->Instance)
+   if(FDCAN1 == hfdcan->Instance) // 현재 FDCAN 인스턴스가 FDCAN1 인지 확인
    {
-	  if((RxFifo0ITs & FDCAN_IT_RX_FIFO0_NEW_MESSAGE) != RESET)
+	  if((RxFifo0ITs & FDCAN_IT_RX_FIFO0_NEW_MESSAGE) != RESET) // 수신 FIFO0에서 새로운 메시지 도착 인터럽트 플래그인지 확인
 	  {
 
 		if (HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_FIFO0, &RxHeader, RxData_From_Node3) != HAL_OK)
@@ -148,10 +147,15 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 	  }
    }
 ```
+>  이 코드는 FDCAN1 모듈의 FIFO0에서 새로운 메시지가 도착할 때마다 해당 메시지를 읽어오는 기능을 수행합니다.
+> <br/>
+> HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_FIFO0, &RxHeader, RxData_From_Node3): 이 함수는 FDCAN 수신 FIFO0에서 메시지를 가져옵니다.
+> <br/>
+> hfdcan은 FDCAN 핸들, FDCAN_RX_FIFO0은 사용할 수신 FIFO 번호, RxHeader는 메시지의 헤더 정보를 저장할 변수, RxData_From_Node3는 메시지 데이터를 저장할 버퍼입니다.
+> <br/>
+> 만약 메시지 가져오기가 실패하면 Error_Handler() 함수가 호출됩니다.
 
 *  BUFFER CallBack :라즈베리파이 사용
->  <br/>
-> 이 코드는 FDCAN1 모듈의 Rx 버퍼0에서 새로운 메시지가 도착할 때마다 해당 메시지를 읽어오는 기능을 수행합니다.
 ```c
 void HAL_FDCAN_RxBufferNewMessageCallback(FDCAN_HandleTypeDef *hfdcan)
 {
@@ -166,21 +170,29 @@ void HAL_FDCAN_RxBufferNewMessageCallback(FDCAN_HandleTypeDef *hfdcan)
 
 }
 ```
+> 이 코드는 FDCAN1 모듈의 Rx 버퍼0에서 새로운 메시지가 도착할 때마다 해당 메시지를 읽어오는 기능을 수행합니다.
+> <br/>
+> HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_BUFFER0, &RxHeader, RxData_From_Node4): 이 함수는 FDCAN 수신 버퍼에서 메시지를 가져옵니다.
+> <br/>
+> hfdcan은 FDCAN 핸들, FDCAN_RX_BUFFER0은 사용할 수신 버퍼의 번호, RxHeader는 메시지의 헤더 정보를 저장할 변수, RxData_From_Node4는 메시지 데이터를 저장할 버퍼입니다.
+> <br/>
+> 만약 메시지 가져오기가 실패하면 Error_Handler() 함수가 호출됩니다.
+
 
 * 각각의 ECU들의 ACK 전송
 ```c
-        if (HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_BUFFER_NEW_MESSAGE, 0) != HAL_OK)
+        if (HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_BUFFER_NEW_MESSAGE, 0) != HAL_OK) // 수신 버퍼에 새로운 메시지 도착  알림 실패시
           {
             /* Notification Error */
-            Error_Handler();
+            Error_Handler(); // 오류 처리
           }
-            if (HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0) != HAL_OK)
+            if (HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO0_NEW_MESSAGE, 0) != HAL_OK) //  FIFO 0에 새로운 메시지 도착 시 알림 실패시
               {
-                Error_Handler();
+                Error_Handler(); // 오류 처리
               }
-            if (HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO1_NEW_MESSAGE, 0) != HAL_OK)
+            if (HAL_FDCAN_ActivateNotification(&hfdcan1, FDCAN_IT_RX_FIFO1_NEW_MESSAGE, 0) != HAL_OK) //  FIFO 1에 새로운 메시지 도착 시 알림 실패시
               {
-                Error_Handler();
+                Error_Handler(); // 오류 처리
               }
 ```
 
