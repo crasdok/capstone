@@ -1,5 +1,8 @@
 # CAN
 
+## 센서 부분
+
+<img width="70%" src="https://github.com/crasdok/capstone/assets/118472691/09678126-57b1-4e91-86e8-5eb091b7303f"/>
 
 ### CAN통신을 사용한 이유
 
