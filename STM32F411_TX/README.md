@@ -181,7 +181,7 @@ TxData[1] = HAL_ADC_GetValue(&hadc1)/40;
 
 * 모드변경 스위치 부분
 ```c
-if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_3)==1)
+            if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_3)==1)
 	    {
 	    	button = 1;
 	    	TxData[2] = button;
