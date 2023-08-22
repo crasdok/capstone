@@ -184,9 +184,10 @@ bus = can.Bus(interface='socketcan',
               channel='can0',
               receive_own_messages=True)
 
-message = can.Message(arbitration_id=0x44, is_extended_id=False,data=[0x52])
+message = can.Message(arbitration_id=0x44, is_extended_id=False,data=[0x52]) //ID=0x44, R 값은 0X52, L값은 0x4C이다. 0X52 와 0x4C 는 아스키코드 값이다.
 bus.send(message, timeout=0.2)
 ```
+
 
 
 ### 라즈베리파이에서 STM32로 CAN통신
