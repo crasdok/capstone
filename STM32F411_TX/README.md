@@ -191,6 +191,16 @@ if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_3)==1)
 	    	button = 0;
 	    	TxData[2] = button;
 	    }
+	    if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4)==1)
+	    {
+	    	button2 = 1;
+	    	TxData[3] = button2;
+	    }
+	    if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4)==0)
+	    {
+	    	button2 = 0;
+	    	TxData[3] = button2;
+	    }
 ```
 > 이 코드는 스위치 값을 읽어와 그 값을 TxData 배열에 저장 하는 코드이다.
 
