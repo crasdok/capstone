@@ -43,14 +43,16 @@
 
 ## 주요 코드 
 
+## 송신부
 
-
-* TX주소와 값의 길이 설정
+* 데이터 주소와 값의 길이 설정
 ```c
 uint8_t TxAddress[] = {0xEE,0xDD,0xCC,0xBB,0xAA};
 uint8_t TxData[32];
+uint8_t RxAddress[] = {0x00,0xDD,0xCC,0xBB,0xAA};
+NRF24_ReadAll(data);//nrf rx
 ```
-* NRF24 Init
+* NRF24 Init 송,수신부 공통으로 사용
 ```c
 void NRF24_Init (void)
 {
@@ -130,45 +132,6 @@ uint8_t NRF24_Transmit (uint8_t *data)
 ```
 > 이렇게 설정된 함수를 호출하면 NRF24 모듈을 사용하여 데이터를 전송할 수 있습니다.
 
-* Rxmode 설정
-
-```c
-void NRF24_RxMode (uint8_t *Address, uint8_t channel)
-{
-	// chip을 설정하기 전에 비활성화
-	CE_Disable();
-
-	// STATUS 레지스터 초기화
-	nrf24_reset (STATUS);
-
-	// RF 채널 선택
-	nrf24_WriteReg (RF_CH, channel);  // select the channel
-
-	// 데이터 파이프 2 선택
-	uint8_t en_rxaddr = nrf24_ReadReg(EN_RXADDR);
-	en_rxaddr = en_rxaddr | (1<<2);
-	nrf24_WriteReg (EN_RXADDR, en_rxaddr);
-
-// 데이터 파이프 1의 주소를 쓰면서 데이터 파이프 2의 LSB 주소를 설정합니다.
-// 데이터 파이프 2에서 데이터 파이프 5까지의 주소는 LSB를 제외하고 4바이트가 동일합니다.
-
-	nrf24_WriteRegMulti(RX_ADDR_P1, Address, 5);  // Pipe1 주소 설정
-	nrf24_WriteReg(RX_ADDR_P2, 0xEE);  // Pipe2의 LSB 주소 설정
-
-	nrf24_WriteReg (RX_PW_P2, 32);   // 파이프 2의 페이로드 크기를 32비트로 설정
-
-
-	// 수신 모드에서 디바이스 전원 켬
-	uint8_t config = nrf24_ReadReg(CONFIG);
-	config = config | (1<<1) | (1<<0);
-	nrf24_WriteReg (CONFIG, config);
-
-	// 설정을 마친 후 chip 활성화
-	CE_Enable();
-}
-```
-> 해당 함수를 호출하면 NRF24 모듈이 데이터 수신을 위해 설정되게 됩니다.
-
 
 * ADC값 변환 후 가공
 ```c
@@ -221,6 +184,130 @@ TxData[0] = 모터 부분의 가변저항 값
 TxData[1] = 핸들 부분의 가변저항 값
 TxData[2] = 전후진 모드변경 스위치 값
 TxData[3] = 주행모드 변경 스위치 값
+RxData[0] = 모터 부분의 가변저항 값
+RxData[1] = 핸들 부분의 가변저항 값
+RxData[2] = 전후진 모드변경 스위치 값
+RxData[3] = 주행모드 변경 스위치 값
 ```
+
+## 수신부
+
+* Rxmode 설정
+
+```c
+void NRF24_RxMode (uint8_t *Address, uint8_t channel)
+{
+	// chip을 설정하기 전에 비활성화
+	CE_Disable();
+
+	// STATUS 레지스터 초기화
+	nrf24_reset (STATUS);
+
+	// RF 채널 선택
+	nrf24_WriteReg (RF_CH, channel);  // select the channel
+
+	// 데이터 파이프 2 선택
+	uint8_t en_rxaddr = nrf24_ReadReg(EN_RXADDR);
+	en_rxaddr = en_rxaddr | (1<<2);
+	nrf24_WriteReg (EN_RXADDR, en_rxaddr);
+
+// 데이터 파이프 1의 주소를 쓰면서 데이터 파이프 2의 LSB 주소를 설정합니다.
+// 데이터 파이프 2에서 데이터 파이프 5까지의 주소는 LSB를 제외하고 4바이트가 동일합니다.
+
+	nrf24_WriteRegMulti(RX_ADDR_P1, Address, 5);  // Pipe1 주소 설정
+	nrf24_WriteReg(RX_ADDR_P2, 0xEE);  // Pipe2의 LSB 주소 설정
+
+	nrf24_WriteReg (RX_PW_P2, 32);   // 파이프 2의 페이로드 크기를 32비트로 설정
+
+
+	// 수신 모드에서 디바이스 전원 켬
+	uint8_t config = nrf24_ReadReg(CONFIG);
+	config = config | (1<<1) | (1<<0);
+	nrf24_WriteReg (CONFIG, config);
+
+	// 설정을 마친 후 chip 활성화
+	CE_Enable();
+}
+```
+> 해당 함수를 호출하면 NRF24 모듈이 데이터 수신을 위해 설정되게 됩니다.
+
+
+* NRF24 모듈의 레지스터 값을 읽고 배열에 저장
+```c
+void NRF24_ReadAll (uint8_t *data)
+{
+	for (int i=0; i<10; i++)
+	{
+		*(data+i) = nrf24_ReadReg(i);
+	}
+
+	nrf24_ReadReg_Multi(RX_ADDR_P0, (data+10), 5);
+
+	nrf24_ReadReg_Multi(RX_ADDR_P1, (data+15), 5);
+
+	*(data+20) = nrf24_ReadReg(RX_ADDR_P2);
+	*(data+21) = nrf24_ReadReg(RX_ADDR_P3);
+	*(data+22) = nrf24_ReadReg(RX_ADDR_P4);
+	*(data+23) = nrf24_ReadReg(RX_ADDR_P5);
+
+	nrf24_ReadReg_Multi(RX_ADDR_P0, (data+24), 5);
+
+	for (int i=29; i<38; i++)
+	{
+		*(data+i) = nrf24_ReadReg(i-12);
+	}
+
+}
+```
+
+> 위 코드는 NRF24 모듈의 여러 레지스터 값을 읽어와서 data 배열에 저장하는 기능을 수행합니다. 이렇게 저장된 레지스터 값들은 나중에 필요한 정보를 추출하는 데 사용될 수 있습니다.
+
+
+* 데이터 수신가능 여부 확인
+```c
+uint8_t isDataAvailable (int pipenum)
+{
+	uint8_t status = nrf24_ReadReg(STATUS);
+
+	if ((status&(1<<6))&&(status&(pipenum<<1)))
+	{
+
+		nrf24_WriteReg(STATUS, (1<<6));
+
+		return 1;
+	}
+
+	return 0;
+}
+```
+> 이 함수는 NRF24 모듈에서 데이터가 수신 가능한지 여부를 판단하여 그 결과를 반환합니다. 이를 통해 데이터 수신 여부에 따라 특정 동작을 수행하는 등의 제어 작업을 할 수 있습니다.
+
+
+* 데이터 수신 함수
+```c
+void NRF24_Receive (uint8_t *data)
+{
+	uint8_t cmdtosend = 0;
+
+	// select the device
+	CS_Select();
+
+	// payload command
+	cmdtosend = R_RX_PAYLOAD;
+	HAL_SPI_Transmit(NRF24_SPI, &cmdtosend, 1, 100);
+
+	// Receive the payload
+	HAL_SPI_Receive(NRF24_SPI, data, 32, 1000);
+
+	// Unselect the device
+	CS_UnSelect();
+
+	HAL_Delay(1);
+
+	cmdtosend = FLUSH_RX;
+	nrfsendCmd(cmdtosend);
+}
+```
+> 이 함수는 NRF24 모듈로부터 데이터를 수신하고, 수신된 데이터를 data 배열에 저장합니다. 또한, 데이터 수신 완료 후 RX FIFO 버퍼를 비우는 작업을 수행합니다.
 
 <br> [위로](#STM32F411) <br>
