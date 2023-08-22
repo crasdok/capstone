@@ -40,7 +40,7 @@
 ![KakaoTalk_20230821_223311406](https://github.com/sc11046/adas_with_can_nrf/assets/121782720/0034f505-db18-4bf8-bcbc-024101b9b17a)
 
 
-> Main의 While문
+* Main의 While문
 ```c
   while (1)
   {
@@ -59,6 +59,68 @@
 	  rpi_motor(); //CAN통신을 통해 받은 값으로 앞바퀴의 좌,우를 움직이는 함수
 	}
 ```
+
+* go_back 함수
+  
+  ```c
+  void go_back(void){
+		if(RxData[2]==0)
+			  {
+			  HAL_GPIO_WritePin(GPIOE, GPIO_PIN_14, 0);
+			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3,0);
+			  htim1.Instance->CCR1=RxData[0];
+			  htim1.Instance->CCR2=RxData[0];
+			  if(RxData[0]>=100)
+				  {
+					  htim1.Instance->CCR1=99;
+					  htim1.Instance->CCR2=99;
+				  }
+			  light_sensor();
+			 // ridar();
+			  }
+		if(RxData[2]==1)
+				{
+			    HAL_GPIO_WritePin(GPIOE, GPIO_PIN_14, 1);
+				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3,1);
+				htim1.Instance->CCR1=RxData[0];
+			    htim1.Instance->CCR2=RxData[0];
+				if(RxData[0]>=100)
+					{
+						htim1.Instance->CCR1=99;
+						htim1.Instance->CCR2=99;
+				    }
+				light_sensor();
+			//	ridar();
+			  }
+}
+```
+
+* buzzer 함수
+
+```c
+void buzzer (void){
+
+	  for(int i=0;i<11;i++)
+	  {a[i]=RxData_From_Node3[i]-'0';}
+
+	  int Distance1 = 100* a[1]  +10*a[2] +a[3];
+	  int Distance2 = 100* a[4]  +10*a[5] +a[6];
+	  int Distance3 = 100* a[8]  +10*a[9] +a[10];
+    if (Distance1 <= 15 || Distance2 <= 15 || Distance3 <= 15)
+    {
+	 	  TIM2->ARR = C;
+	 	  TIM2->CCR1 = TIM2->ARR / 2;
+	 	  HAL_Delay(50);
+	 	  TIM2->CCR1 = 0;
+	 	  HAL_Delay(50);
+	 	  }
+}
+```
+
+*
+
+
+  
 
 
 
