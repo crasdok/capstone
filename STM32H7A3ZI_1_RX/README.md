@@ -38,6 +38,7 @@
 ### 모터 제어 순서도
 
 ![KakaoTalk_20230821_223311406](https://github.com/sc11046/adas_with_can_nrf/assets/121782720/0034f505-db18-4bf8-bcbc-024101b9b17a)
+> go_back, nrf_motor, rpi_motor 함수의 제어 포함
 
 
 * Main의 While문
@@ -76,7 +77,7 @@
 					  htim1.Instance->CCR2=99;
 				  }
 			  light_sensor();
-			 // ridar();
+			  ridar();
 			  }
 		if(RxData[2]==1)
 				{
@@ -90,13 +91,153 @@
 						htim1.Instance->CCR2=99;
 				    }
 				light_sensor();
-			//	ridar();
+				ridar();
 			  }
+  ```
+  > 수신된 RF값 데이터를 기반으로 움직임을 제어하는 역할을 한다. 수신된 데이터의 특정 값에 따라 모터의 동작 방향을 설정하고 모터의 속도를 조절하고, 만약 모터의 속도가 일정 값 이상이면 최대 속도로 제한한다. 이후에 빛 
+  센서와 라이다 센서의 데이터를 활용하여 추가적인 동작을 수행
+  
+* nrf_motor 함수
+```c
+void nrf_motor (void){
+	if(RxData[3]==0)
+	{
+			  if (RxData[1]  <50)
+				  {
+					  while (RxData[1]  < 50)
+					  {
+
+						  light_sensor();
+						       buzzer();
+						  if (isDataAvailable(2) == 1)
+						  {
+							  NRF24_Receive(RxData);
+						  }
+						  htim1.Instance->CCR3 = 80;
+						  HAL_GPIO_WritePin(GPIOG, GPIO_PIN_14, 0);
+						  HAL_Delay(100);
+						  go_back();
+
+						  if(50<=RxData[1]&&RxData[1]<=65)
+						  {
+							  htim1.Instance->CCR3 = 100;
+							  HAL_GPIO_WritePin(GPIOG, GPIO_PIN_14, 1);
+							  HAL_Delay(300);
+							  htim1.Instance->CCR3 = 0;
+						  }
+					  }
+				  }
+			  if (RxData[1] > 65)
+					  {
+						  while (RxData[1] > 65)
+						  {
+							  light_sensor();
+							       buzzer();
+							  if (isDataAvailable(2) == 1)
+							  {
+								  NRF24_Receive(RxData);
+							  }
+							  htim1.Instance->CCR3 = 80;
+							  HAL_GPIO_WritePin(GPIOG, GPIO_PIN_14, 1);
+							  HAL_Delay(100);
+							  go_back();
+							  if(50<=RxData[1]&&RxData[1]<=65)
+							  {
+								  htim1.Instance->CCR3 = 90;
+								  HAL_GPIO_WritePin(GPIOG, GPIO_PIN_14, 0);
+								  HAL_Delay(250);
+								  htim1.Instance->CCR3 = 0;
+							  }
+
+						  }
+					  }
+
+
+	  }
 }
 ```
+> 수신된 RF값 데이터를 기반으로 움직임을 제어. 수신된 데이터의 특정 값에 따라 앞바퀴의 방향을 설정한다
+
+|범위| 방향                                                      |
+| ------- | ------------------------------------------------------------ |
+| RxData[1]  < 50 | Left |
+| RxData[1] > 65 | Right |
+| 50<=RxData[1]&&RxData[1]<=65 | Go |
+
+
+* rpi_motor 함수
+
+```c
+void rpi_motor (void){
+	  if(RxData[3]==1)
+	  {
+		  while (RxData_From_Node4[0]=='L')
+		  {
+			  light_sensor();
+			       buzzer();
+			  if (isDataAvailable(2) == 1)
+			  {
+				  NRF24_Receive(RxData);
+			  }
+			  htim1.Instance->CCR3 = 80;
+			  HAL_GPIO_WritePin(GPIOG, GPIO_PIN_14, 0);
+			  HAL_Delay(100);
+			  go_back();
+			  if(RxData[3]==0)
+			  {
+				  break;
+			  }
+			  if(RxData_From_Node4[0]=='G')
+			  {
+				  htim1.Instance->CCR3 = 100;
+				  HAL_GPIO_WritePin(GPIOG, GPIO_PIN_14, 1);
+				  HAL_Delay(200);
+				  htim1.Instance->CCR3 = 0;
+				break;
+			  }
+
+		  }
+
+
+			  while (RxData_From_Node4[0]=='R')
+			  {
+					   light_sensor();
+				       buzzer();
+				  if (isDataAvailable(2) == 1)
+				  {
+					  NRF24_Receive(RxData);
+				  }
+				  htim1.Instance->CCR3 = 80;
+				  HAL_GPIO_WritePin(GPIOG, GPIO_PIN_14, 1);
+				  HAL_Delay(100);
+				  go_back();
+				  if(RxData[3]==0)
+				  {
+					  break;
+				  }
+				  if(RxData_From_Node4[0]=='G')
+				  {
+					  htim1.Instance->CCR3 = 90;
+					  HAL_GPIO_WritePin(GPIOG, GPIO_PIN_14, 0);
+					  HAL_Delay(200);
+					  htim1.Instance->CCR3 = 0;
+					break;
+				  }
+			  }
+	  }
+}
+```
+> 수신된 CAN값 데이터를 기반으로 움직임을 제어. 수신된 데이터의 특정 값에 따라 모터의 동작 방향을 설정한다.
+> <br/>
+> RxData[3]==1 으로 차선인식 모드로 설정되고 각각의 상황에 따라 앞바퀴의 방향을 조향한다.
+
+|범위| 방향                                                      |
+| ------- | ------------------------------------------------------------ |
+| RxData_From_Node4[0]=='L' | Left |
+| RxData_From_Node4[0]=='R' | Right |
+| RxData_From_Node4[0]=='G' | Go |
 
 * buzzer 함수
-
 ```c
 void buzzer (void){
 
@@ -116,8 +257,28 @@ void buzzer (void){
 	 	  }
 }
 ```
+> Distance1, Distance2, 또는 Distance3 중 하나라도 15 이하의 값이라면 부저가 울리는 코드
 
-*
+
+
+* light_sensor 함수
+
+```c
+void light_sensor (void){
+
+	 for(int l=12;l<=14;l++)
+	 {a[l]=RxData_From_Node3[l]-'0';}
+	 int jodo = 100* a[12]  +10*a[13] +a[14];
+	      htim3.Instance->CCR1=jodo;
+	      if (jodo<45)
+	      {
+	    	  htim3.Instance->CCR1=0;
+	      }
+}
+```
+> 라이다 센서에서 계산한 밝기 값을 타이머 3의 채널 1의 캡처/비교 레지스터인 CCR1에 설정한다. 이를 통해 LED의 밝기가 설정된다.
+> <br/>
+> 만약 계산된 밝기 값이 45보다 작다면, htim3.Instance->CCR1=0;(LED의 밝기를 0으로 설정하여 LED를 꺼준다.)
 
 
   
