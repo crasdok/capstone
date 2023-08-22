@@ -181,24 +181,24 @@ TxData[1] = HAL_ADC_GetValue(&hadc1)/40;
 
 * 모드변경 스위치 부분
 ```c
-            if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_3)==1)
+            if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_3)==1) //  GPIOB 포트의 3번 핀을 읽어와서 버튼의 상태를 감지 후 HIGH(1) 상태이면
 	    {
-	    	button = 1;
+	    	button = 1; // 전후진 상태 = 1
+	    	TxData[2] = button; 
+	    }
+	    if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_3)==0) // GPIOB 포트의 3번 핀을 읽어와서 버튼의 상태를 감지 후 LOW(0) 상태이면
+	    {
+	    	button = 0; // 전후진 상태 = 0
 	    	TxData[2] = button;
 	    }
-	    if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_3)==0)
+	    if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4)==1) //  GPIOB 포트의 4번 핀을 읽어와서 버튼의 상태를 감지 후 HIGH(1) 상태이면
 	    {
-	    	button = 0;
-	    	TxData[2] = button;
-	    }
-	    if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4)==1)
-	    {
-	    	button2 = 1;
+	    	button2 = 1; // 주행모드 변경 스위치 상태 = 1
 	    	TxData[3] = button2;
 	    }
-	    if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4)==0)
+	    if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_4)==0) // GPIOB 포트의 4번 핀을 읽어와서 버튼의 상태를 감지 후 LOW(0) 상태이면
 	    {
-	    	button2 = 0;
+	    	button2 = 0; // 주행모드 변경 스위치 상태 = 0
 	    	TxData[3] = button2;
 	    }
 ```
@@ -207,9 +207,9 @@ TxData[1] = HAL_ADC_GetValue(&hadc1)/40;
 * 전송하는지 확인하기 위한 led 작동
 
 ```c
-if (NRF24_Transmit(TxData) == 1)
+if (NRF24_Transmit(TxData) == 1) // NRF24_Transmit 함수를 호출하여 반환하는 값이 1인 경우 (즉, 전송 성공한 경우)
 	  	  {
-	  		  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
+	  		  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13); // : GPIOC 포트의 13번 핀 (LED가 연결된 핀)의 상태를 토글합니다.
 	  		  HAL_Delay(100);
 	  	  }
 ```
