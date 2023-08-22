@@ -41,28 +41,19 @@ bool getData(TF_Luna_Lidar *tf_luna, int16_t *dist, int16_t *flux, int16_t *temp
 {
     tfStatus = TFL_READY;    // 이전에 발생한 오류 상태를 초기화
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    // Step 1 - Use the `HAL_I2C_MASTER_Receive` function `readReg` to fill the six byte
-    // `dataArray` from the contiguous sequence of registers `TFL_DIST_LO`
-    // to `TFL_TEMP_HI` that declared in the header file 'tfluna_i2c.h`.
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    for (uint8_t reg = TFL_DIST_LO; reg <= TFL_TEMP_HI; reg++) // 센서의 레지스터 TFL_DIST_LO부터 TFL_TEMP_HI까지 순회하면서 데이터를 읽어온다.
+
+    for (uint8_t reg = TFL_DIST_LO; reg <= TFL_TEMP_HI; reg++) // 센서의 레지스터 TFL_DIST_LO부터 TFL_TEMP_HI까지 순회해 데이터를 읽음
     {
-      if( !readReg(tf_luna, reg)) return false; // readReg 함수를 호출하여 레지스터에서 데이터를 읽어오는데 실패하면 false를 반환하고 함수 종료
+      if( !readReg(tf_luna, reg)) return false; // readReg 함수를 호출하여 레지스터에서 데이터를 읽는데 실패하면 false를 반환, 함수 종료
           else dataArray[ reg] = regReply; // 데이터를 읽어오는데 성공하면 dataArray 배열에 해당 레지스터의 데이터를 저장
     }
 
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    // Step 2 - Shift data from read array into the three variables
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
    *dist = dataArray[ 0] + ( dataArray[ 1] << 8);
    *flux = dataArray[ 2] + ( dataArray[ 3] << 8);
    *temp = dataArray[ 4] + ( dataArray[ 5] << 8);
 
 
-
-    // Convert temperature from hundredths
-    // of a degree to a whole number
    *temp = *temp / 100;
   //  *temp = *temp * 9 / 5 + 32;
     // Then convert Celsius to degrees Fahrenheit
