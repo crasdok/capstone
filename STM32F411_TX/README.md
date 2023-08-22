@@ -190,14 +190,11 @@ if (NRF24_Transmit(TxData) == 1) // NRF24_Transmit 함수를 호출하여 반환
 
 * TxData[]의 각각의 의미
 ```c
-TxData[0] = 모터 부분의 가변저항 값
-TxData[1] = 핸들 부분의 가변저항 값
-TxData[2] = 전후진 모드변경 스위치 값
-TxData[3] = 주행모드 변경 스위치 값
-RxData[0] = 모터 부분의 가변저항 값
-RxData[1] = 핸들 부분의 가변저항 값
-RxData[2] = 전후진 모드변경 스위치 값
-RxData[3] = 주행모드 변경 스위치 값
+TxData[0] , RxData[0]= 모터 부분의 가변저항 값
+TxData[1] , RxData[1]= 핸들 부분의 가변저항 값
+TxData[2] , RxData[2]= 전후진 모드변경 스위치 값
+TxData[3] , RxData[3]= 주행모드 변경 스위치 값
+
 ```
 <br> [위로](#STM32F411) <br>
 
