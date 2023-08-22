@@ -129,7 +129,7 @@ message = can.Message(arbitration_id=0x44, is_extended_id=False,data=[0x4C]) // 
 > * TxHeader.Id = 0x44; // 라즈베리파이
 
 
-* FIFO CallBack : STM32 2개에 사용
+* FIFO CallBack : STM32 2개에서 데이터를 받는데에 사용
 
 ```c
 void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
@@ -155,7 +155,7 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 > <br/>
 > 만약 메시지 가져오기가 실패하면 Error_Handler() 함수가 호출됩니다.
 
-*  BUFFER CallBack :라즈베리파이 사용
+*  BUFFER CallBack :라즈베리파이 에서 데이터를 받는데에 사용
 ```c
 void HAL_FDCAN_RxBufferNewMessageCallback(FDCAN_HandleTypeDef *hfdcan)
 {
