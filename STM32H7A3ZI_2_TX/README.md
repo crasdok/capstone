@@ -35,6 +35,10 @@
 ioc 사진 
 채널 124를 사용 adc
 
+## 초음파 거리를 측정하는 과정 
+
+<img width="100%" img src="https://github.com/crasdok/capstone/assets/118472691/2afaa613-30f2-49bb-ad56-e9f89311bec4">
+
  ## 코드
 * 입력 캡처를 사용하여 시간 간격을 측정하고 이를 거리로 변환하는 데 사용
 ```c
