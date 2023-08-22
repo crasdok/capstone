@@ -236,23 +236,22 @@ void NRF24_RxMode (uint8_t *Address, uint8_t channel)
 ```c
 void NRF24_ReadAll (uint8_t *data)
 {
-	for (int i=0; i<10; i++)
+	for (int i=0; i<10; i++) // 처음 10개의 레지스터 값을 data 배열에 저장
 	{
 		*(data+i) = nrf24_ReadReg(i);
 	}
 
-	nrf24_ReadReg_Multi(RX_ADDR_P0, (data+10), 5);
+	nrf24_ReadReg_Multi(RX_ADDR_P0, (data+10), 5); //data 배열에 RX 주소 파이프 0과 1의 주소 값을 저장
+	nrf24_ReadReg_Multi(RX_ADDR_P1, (data+15), 5); //                     
 
-	nrf24_ReadReg_Multi(RX_ADDR_P1, (data+15), 5);
-
-	*(data+20) = nrf24_ReadReg(RX_ADDR_P2);
+	*(data+20) = nrf24_ReadReg(RX_ADDR_P2); // RX 주소 파이프 2부터 5까지의 주소 값을 각각 nrf24_ReadReg 함수를 사용하여 읽어와서 data 배열에 저장
 	*(data+21) = nrf24_ReadReg(RX_ADDR_P3);
 	*(data+22) = nrf24_ReadReg(RX_ADDR_P4);
 	*(data+23) = nrf24_ReadReg(RX_ADDR_P5);
 
-	nrf24_ReadReg_Multi(RX_ADDR_P0, (data+24), 5);
+	nrf24_ReadReg_Multi(RX_ADDR_P0, (data+24), 5); // RX 주소 파이프 0의 주소 값을 읽어와서 data 배열에 저장
 
-	for (int i=29; i<38; i++)
+	for (int i=29; i<38; i++) //  29부터 37까지의 레지스터 값을 순회하며, nrf24_ReadReg 함수를 사용하여 해당 레지스터의 값을 읽어와서 data 배열에 저장
 	{
 		*(data+i) = nrf24_ReadReg(i-12);
 	}
@@ -265,16 +264,17 @@ void NRF24_ReadAll (uint8_t *data)
 
 * 데이터 수신가능 여부 확인
 ```c
-uint8_t isDataAvailable (int pipenum)
+uint8_t isDataAvailable (int pipenum) 
 {
-	uint8_t status = nrf24_ReadReg(STATUS);
+	uint8_t status = nrf24_ReadReg(STATUS); // 데이터가 수신 가능한지를 판단하기 위해 NRF24 모듈의 상태 레지스터 값을 읽는다.
 
-	if ((status&(1<<6))&&(status&(pipenum<<1)))
+
+	if ((status&(1<<6))&&(status&(pipenum<<1))) // RX FIFO가 비어있고 해당 파이프로부터 데이터가 수신되었을 경우
 	{
 
-		nrf24_WriteReg(STATUS, (1<<6));
+		nrf24_WriteReg(STATUS, (1<<6)); // 상태 레지스터의 6번째 비트를 1로 설정하여 RX FIFO를 비움.
 
-		return 1;
+		return 1; // 데이터가 수신 가능한 상태임을 나타내는 1을 반환
 	}
 
 	return 0;
@@ -289,18 +289,15 @@ void NRF24_Receive (uint8_t *data)
 {
 	uint8_t cmdtosend = 0;
 
-	// select the device
+	// NRF24 모듈과 통신하는데 사용되는 CS (Chip Select) 핀을 활성화
 	CS_Select();
+	
+	cmdtosend = R_RX_PAYLOAD; // 데이터 수신을 위해 NRF24 모듈에게 R_RX_PAYLOAD 명령을 보낼 준비.
+	HAL_SPI_Transmit(NRF24_SPI, &cmdtosend, 1, 100); // SPI 통신을 사용하여 cmdtosend 변수의 값을 NRF24 모듈에게 보냄.
 
-	// payload command
-	cmdtosend = R_RX_PAYLOAD;
-	HAL_SPI_Transmit(NRF24_SPI, &cmdtosend, 1, 100);
+	HAL_SPI_Receive(NRF24_SPI, data, 32, 1000); // SPI 통신을 사용하여 NRF24 모듈로부터 데이터를 수신.
 
-	// Receive the payload
-	HAL_SPI_Receive(NRF24_SPI, data, 32, 1000);
-
-	// Unselect the device
-	CS_UnSelect();
+	CS_UnSelect(); //SPI 통신이 종료되었으므로 CS 핀을 비활성화하여 NRF24 모듈과의 통신을 종료.
 
 	HAL_Delay(1);
 
