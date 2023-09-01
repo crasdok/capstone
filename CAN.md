@@ -262,6 +262,8 @@ sudo ifconfig can0 txqueuelen 10000
 
 ### STM32 Rx에서 모드 CAN통신 값 받는 영상
 
-ㄴㅇㄹㄴㅇㄹㅇㄴㄹㅇㄹㄴ
+![](https://github.com/crasdok/capstone/assets/118472691/2bf48d4d-9a6c-45ee-9d5f-f2b09cde942b)
+![](https://github.com/crasdok/capstone/assets/118472691/f340aa68-cc4f-4742-81eb-9f2f1aee943e)
+![](https://github.com/crasdok/capstone/assets/118472691/6d249b61-b789-4fc5-918b-05c1babc87f1)
 
 <br> [위로](#CanCanFD-통신) <br>
