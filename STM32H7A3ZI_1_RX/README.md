@@ -306,7 +306,7 @@ void light_sensor (void){
 ### 기능 구현 영상 
   
 ![뒷바퀴 엑셀](https://github.com/qkcvb110/Portfolio/assets/121782690/c9771932-f7c3-4f74-92a0-41dc8a3f20c6)
-> 뒷바퀴 악셀
+> 뒷바퀴 전,후진
 
 ![부저 (1)](https://github.com/qkcvb110/Portfolio/assets/121782690/8dcb642f-5dad-4d8f-a2a7-7644101f6e36)
 > 부저 (LED로 대체)
