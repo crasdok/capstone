@@ -210,6 +210,10 @@ adc1 = HAL_ADC_GetValue(&hadc1)/650;
 
 > adc1값에 650을 나눈 이유는 16비트 ADC값이기 때문에 최댓값 65535을 100으로 맞추기 위해 나누었다.
 
+## 조도 값과 초음파 값을 보내는 영상
+
+![조도](https://github.com/crasdok/capstone/assets/118472691/f340aa68-cc4f-4742-81eb-9f2f1aee943e)
+![초음파](https://github.com/crasdok/capstone/assets/118472691/6d249b61-b789-4fc5-918b-05c1babc87f1)
 
 ## 기능 구현 영상
 
