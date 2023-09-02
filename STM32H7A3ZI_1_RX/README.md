@@ -303,11 +303,12 @@ void light_sensor (void){
 > <br/>
 > 만약 계산된 밝기 값이 45보다 작다면, htim3.Instance->CCR1=0;(LED의 밝기를 0으로 설정하여 LED를 꺼준다.)
 
-
+### 기능 구현 영상 
   
+![뒷바퀴 엑셀](https://github.com/qkcvb110/Portfolio/assets/121782690/c9771932-f7c3-4f74-92a0-41dc8a3f20c6)
+> 뒷바퀴 악셀
 
-
-
-
+![부저 (1)](https://github.com/qkcvb110/Portfolio/assets/121782690/8dcb642f-5dad-4d8f-a2a7-7644101f6e36)
+> 부저 (LED로 대체)
 
 <br> [위로](#초음파센서-및-조도센서-STM32) <br>
