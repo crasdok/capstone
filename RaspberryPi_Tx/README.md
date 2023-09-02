@@ -148,17 +148,16 @@ if cv2.waitKey(1) & 0xff == ord('q'):
    break
 ```
 
-
-> 방향제어 예시
-
-<img width="50%" src="https://github.com/crasdok/capstone/assets/118472691/580509e4-9024-4171-8904-21c613dff041"/>
-
 ### 문제점 및 개선점
 
 <img width="60%" src="https://github.com/crasdok/capstone/assets/118472691/f9c37564-282a-4767-b809-39d998f18080"/>
 
 > * 차량의 보닛에 카메라를 달자 1m 정도 앞의 차선을 인식.
 > * 차량과 차선의 크기를 고려하여 높은 위치에서 앞의 차선을 인식하게 함.
+
+### 차선인식 영상
+
+![라즈베리 차선인식](https://github.com/qkcvb110/Portfolio/assets/121782690/5cc05418-0e22-4437-b580-0eca8d65ab10)
 
 ### 사용 기술
 ------------
