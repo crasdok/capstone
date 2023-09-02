@@ -100,4 +100,9 @@ sprintf ((char *)TxData_Node1_To_Node3," %d%d%d",Dist1,Dist2,Dist3);
 ## 보내는 라이다 값
 ![라이다-Rx](https://github.com/sc11046/adas_with_can_nrf/assets/121782720/84de82f7-c670-4ec6-ade2-91480391ada0)
 
+## 기능 구현 영상
+
+![라이다 센서](https://github.com/qkcvb110/Portfolio/assets/121782690/8e93a8c7-8ef5-458a-87c5-c8af9d7982b0)
+> 앞의 거리가 20cm이하면 모터 정지
+
 <br> [위로](#라이다센서-STM32) <br>
