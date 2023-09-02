@@ -329,6 +329,6 @@ void NRF24_Receive (uint8_t *data)
 
 ## RF 통신중 Live Expression 화면 영상
 
-
+![nrf-rx](https://github.com/sc11046/adas_with_can_nrf/assets/121782720/b76b45c1-343f-49d7-9c34-c52e42e75971)
 
 <br> [위로](#STM32F411) <br>
