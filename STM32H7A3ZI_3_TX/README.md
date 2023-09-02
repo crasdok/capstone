@@ -97,4 +97,7 @@ sprintf ((char *)TxData_Node1_To_Node3," %d%d%d",Dist1,Dist2,Dist3);
 ```
 > CAN에 대한 자세한 사항은 CAN.md에서 확인
 
+## 보내는 라이다 값
+![라이다-Rx](https://github.com/sc11046/adas_with_can_nrf/assets/121782720/84de82f7-c670-4ec6-ade2-91480391ada0)
+
 <br> [위로](#라이다센서-STM32) <br>
