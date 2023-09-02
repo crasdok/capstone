@@ -219,7 +219,9 @@ adc1 = HAL_ADC_GetValue(&hadc1)/650;
 
 조도, 초음파
 
-
+![조도_AdobeExpress_AdobeExpress](https://github.com/crasdok/capstone/assets/118472691/c5a6ff02-2a8e-413e-a355-f17a2049f019)
+![부저 (1)](https://github.com/qkcvb110/Portfolio/assets/121782690/8dcb642f-5dad-4d8f-a2a7-7644101f6e36)
+> 밝기에 따라 헤드라이트 밝기 조절, 가까우면 부저 울림
 
 
 
