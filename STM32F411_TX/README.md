@@ -326,6 +326,14 @@ void NRF24_Receive (uint8_t *data)
 > * isDataAvailable 함수를 사용하여 파이프 번호 2에서 데이터가 수신 가능한지를 확인
 > * NRF24_Receive 함수를 호출하고, 수신된 데이터를 RxData 배열에 저장
 
+## 기능 구현 영상
+
+![](https://github.com/crasdok/capstone/assets/118472691/ea65f67a-144f-4cbc-81cd-1d91fea95d6b)
+
+> 핸들을 이용한 앞바퀴 조향
+
+![뒷바퀴 엑셀](https://github.com/qkcvb110/Portfolio/assets/121782690/c9771932-f7c3-4f74-92a0-41dc8a3f20c6)
+> 악셀을 이용한 뒷바퀴 속도 조절
 
 ## RF 통신중 Live Expression 화면 영상
 
