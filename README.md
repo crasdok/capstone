@@ -74,7 +74,7 @@
 <img width="30%" src="https://github.com/crasdok/capstone/assets/118472691/69ab3329-fc5e-4d6d-9518-1cb6826d1e31"/><img width="30%" src="https://github.com/crasdok/capstone/assets/118472691/2b596211-5e08-41d8-b036-ee912e681f41"/><img width="30%" src="https://github.com/crasdok/capstone/assets/118472691/a3dd97c7-925e-4b5d-aa1d-d159df591aff"/>
 
 ![부저 (1)](https://github.com/qkcvb110/Portfolio/assets/121782690/8dcb642f-5dad-4d8f-a2a7-7644101f6e36)
-> 동영상으로 표현을 위해 LED로 대체
+> 동영상으로 표현을 위해 LED로 대체 좌,우,뒷 부분에 각각 초음파 센서 1개 씩
   
   ### 2.조도 센서를 이용해 라이트 밝기 조절
 
