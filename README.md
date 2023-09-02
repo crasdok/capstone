@@ -92,7 +92,7 @@
   
   ### 5.라이다센서를 이용해 앞쪽에 장애물이 있을 시 모터 정지
 
- ![라이다_AdobeExpress_AdobeExpress](https://github.com/crasdok/capstone/assets/118472691/9ee851ef-f989-4317-b288-fad4d372f022)
+ ![라이다_AdobeExpress_AdobeExpress](https://github.com/qkcvb110/Portfolio/assets/121782690/8e93a8c7-8ef5-458a-87c5-c8af9d7982b0)
 
 <br> [목차로 돌아가기](#1목차) <br>
 
