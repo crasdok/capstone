@@ -328,7 +328,7 @@ void NRF24_Receive (uint8_t *data)
 
 ## 기능 구현 영상
 
-![](https://github.com/crasdok/capstone/assets/118472691/66069b39-29d6-4271-b080-e2733d8d70c1)
+![](https://github.com/crasdok/capstone/assets/118472691/4d100a40-bb1d-4ec3-a9a1-659828b5c2a6)
 
 > 핸들을 이용한 앞바퀴 조향
 
